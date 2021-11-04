@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#926C4D"
+    tools:context=".MainActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/MenuToolbar"
+        android:layout_width="411dp"
+        android:layout_height="66dp"
+        android:background="?attr/colorPrimary"
+        android:backgroundTint="#526935"
+        android:fontFamily="@font/asap"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Menú Principal"
+        app:titleTextColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/buttonQuiz"
+        android:layout_width="135dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="252dp"
+        android:backgroundTint="#526935"
+        android:fontFamily="@font/asap"
+        android:foregroundTint="#000AA00F"
+        android:text="¡JUGAR!"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MenuToolbar"
+        app:rippleColor="#00AA00" />
+
+    <Button
+        android:id="@+id/B_rank"
+        android:layout_width="135dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="#526935"
+        android:fontFamily="@font/asap"
+        android:text="Ranking"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonQuiz" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="267dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="68dp"
+        android:background="#526935"
+        android:dropDownWidth="wrap_content"
+        android:padding="10sp"
+        android:fontFamily="@font/asap"
+        android:popupBackground="#526935"
+        app:layout_constraintBottom_toTopOf="@+id/buttonQuiz"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MenuToolbar"
+        app:layout_constraintVertical_bias="0.654" />
+
+    <Button
+        android:id="@+id/buttonExit"
+        android:layout_width="135dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="#526935"
+        android:fontFamily="@font/asap"
+        android:text="SALIR"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/B_rank" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="568dp"
+        android:fontFamily="@font/asap"
+        android:text="MINECRAFT QUIZ"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
