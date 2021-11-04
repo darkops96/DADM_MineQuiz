@@ -11,7 +11,10 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
     //Create database instance
     private static RoomQuestionsDB database;
     //Define database name
-    private static String DATABASE_NAME = "questions";
+    private static String DATABASE_NAME = "Questions";
+
+    //Create Dao
+    public abstract QuestionsDao questionsDao();
 
     public synchronized static RoomQuestionsDB getInstance(Context context){
         //Miramos si ya existe
@@ -179,13 +182,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setAnswer4("11");
             question.setCorrectAnswers(1000);
             question.setType(2);
-
         }
-
         return database;
     }
-
-    //Create Dao
-    public abstract QuestionsDao questionsDao();
-
 }

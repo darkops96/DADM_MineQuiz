@@ -11,12 +11,15 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button openQuiz, exit, ranking;
     private Spinner spinner;
     private int mode;
+    private String user;
+    private TextView helloUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +27,11 @@ public class MainActivity extends AppCompatActivity {
         mode = 0;
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         setContentView(R.layout.activity_main);
+        Intent intent = getIntent();
+        user = intent.getStringExtra("User").toString().trim();
+        helloUser = (TextView) findViewById(R.id.helloUser);
+        helloUser.setText("¡Hola "+user+"!");
+
         openQuiz = (Button) findViewById(R.id.buttonQuiz);
         openQuiz.setOnClickListener(new View.OnClickListener() {
             @Override

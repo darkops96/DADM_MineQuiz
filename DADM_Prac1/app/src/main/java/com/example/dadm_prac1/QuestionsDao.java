@@ -1,6 +1,6 @@
 package com.example.dadm_prac1;
 
-import static androidx.room.OnConflictStrategy.REPLACE;
+import static androidx.room.OnConflictStrategy.*;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
