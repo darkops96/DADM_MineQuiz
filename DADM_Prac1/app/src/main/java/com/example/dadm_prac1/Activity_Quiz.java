@@ -55,7 +55,7 @@ public class Activity_Quiz extends AppCompatActivity {
 
         score = 0;
         scoreTV = (TextView) findViewById(R.id.scoreTV);
-        scoreTV.setText("Puntuacion: "+score);
+        scoreTV.setText("Puntuación: "+score * 100 + "        Aciertos: " + score);
         numPreg = 0;
         acierto = false;
         intermedio = false;
@@ -90,33 +90,28 @@ public class Activity_Quiz extends AppCompatActivity {
 
         if(mode == 0) {
             maxPreg = textQuestionsList.size();
-        } else {
+        } else if(mode == 1) {
             maxPreg = imageQuestionsList.size();
+        } else{
+            maxPreg = multimediaQuestionsList.size();
         }
 
-        if(numPreg<maxPreg)
+        if(numPreg<maxPreg-1)
         {
             Fragment fragment;
-            if(!intermedio) {
-                if (acierto) {
-                    score++;
-                    scoreTV.setText("Puntuacion: "+score);
-                    fragment = new Acierto_Fragment();
-                } else {
-                    fragment = new Fallo_Fragment();
-                }
-                intermedio = true;
-                numPreg++;
-            } else {
-                if(mode == 0) {
-                    fragment = new Pregunta_Texto();
-                } else {
-                    fragment = new Pregunta_Imagenes();
-                }
-                acierto = false;
-                intermedio = false;
+            if (acierto) {
+                score++;
+                scoreTV.setText("Puntuación: "+score * 100 + "       Aciertos: " + score);
             }
-
+            numPreg++;
+            if(mode == 0) {
+                fragment = new Pregunta_Texto();
+            } else if(mode ==1){
+                fragment = new Pregunta_Imagenes();
+            } else{
+                fragment = new Pregunta_Multimedia();
+            }
+            acierto = false;
             FragmentManager fm = getSupportFragmentManager();
             FragmentTransaction transaction = fm.beginTransaction();
             transaction.replace(R.id.fragmentContainerView, fragment);
