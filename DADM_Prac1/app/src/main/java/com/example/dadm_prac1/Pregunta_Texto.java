@@ -38,7 +38,6 @@ public class Pregunta_Texto extends Fragment {
     private String respuestas3[] = new String[6];
     private String respuestas4[] = new String[6];
     private int soluciones[] = new int[6];
-    private int[][] combinaciones = new int[][]{new int[]{0, 3, 1, 4, 2, 5}, new int[]{5, 3, 2, 4, 0, 1}, new int[]{1, 5, 2, 0, 4, 3},new int[]{4, 2, 5, 3, 1, 0}};
 
     int solucion;
 
@@ -76,7 +75,6 @@ public class Pregunta_Texto extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        //Activity_Quiz quiz = (Activity_Quiz) getActivity();
     }
 
     @Override
@@ -119,21 +117,20 @@ public class Pregunta_Texto extends Fragment {
             i++;
         }
 
-        int random = quiz.getRandom();
         int preg = quiz.getNumPreg();
-        solucion = soluciones[combinaciones[random][preg]];
+        solucion = soluciones[preg];
 
-        if(combinaciones[random][preg] != 2){
+        if(preg != 2){
             planks.setVisibility(View.GONE);
         } else {
             planks.setVisibility(View.VISIBLE);
         }
 
-        pregunta.setText(preguntas[combinaciones[random][preg]]);
-        respuesta1.setText(respuestas1[combinaciones[random][preg]]);
-        respuesta2.setText(respuestas2[combinaciones[random][preg]]);
-        respuesta3.setText(respuestas3[combinaciones[random][preg]]);
-        respuesta4.setText(respuestas4[combinaciones[random][preg]]);
+        pregunta.setText(preguntas[preg]);
+        respuesta1.setText(respuestas1[preg]);
+        respuesta2.setText(respuestas2[preg]);
+        respuesta3.setText(respuestas3[preg]);
+        respuesta4.setText(respuestas4[preg]);
 
         respuestas.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override

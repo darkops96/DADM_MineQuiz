@@ -19,12 +19,11 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Activity_Quiz extends AppCompatActivity {
 
     private Button botonValidar;
-    private int score, random, numPreg, mode;
+    private int score, numPreg, mode;
     private FragmentContainerView myContainer;
     private boolean acierto, intermedio;
     private TextView scoreTV;
@@ -57,8 +56,6 @@ public class Activity_Quiz extends AppCompatActivity {
         score = 0;
         scoreTV = (TextView) findViewById(R.id.scoreTV);
         scoreTV.setText("Puntuacion: "+score);
-        Random r = new Random();
-        random = r.nextInt(4);
         numPreg = 0;
         acierto = false;
         intermedio = false;
@@ -139,9 +136,6 @@ public class Activity_Quiz extends AppCompatActivity {
         this.acierto = acierto;
     }
 
-    public int getRandom(){
-        return random;
-    }
     public int getNumPreg(){
         return numPreg;
     }
