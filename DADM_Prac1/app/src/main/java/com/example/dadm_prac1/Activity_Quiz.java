@@ -31,6 +31,9 @@ public class Activity_Quiz extends AppCompatActivity {
 
     //Room
     List<QuestionsData> questionsList = new ArrayList<>();
+    public List<QuestionsData> textQuestionsList = new ArrayList<>();
+    public List<QuestionsData> imageQuestionsList = new ArrayList<>();
+    public List<QuestionsData> multimediaQuestionsList = new ArrayList<>();
     RoomQuestionsDB questionsDB;
 
     @Override
@@ -41,9 +44,15 @@ public class Activity_Quiz extends AppCompatActivity {
         questionsDB = RoomQuestionsDB.getInstance(this);
         questionsList = questionsDB.questionsDao().getAll();
 
-        //PRUEBA BORRAR
-        String q1 = questionsList.get(3).getQuestion().trim();
-        Toast.makeText(getApplicationContext(), q1,Toast.LENGTH_SHORT).show();
+        for (QuestionsData question:questionsList)
+        {
+            if(question.getType()==0)
+                textQuestionsList.add(question);
+            if(question.getType()==1)
+                imageQuestionsList.add(question);
+            if(question.getType()==2)
+                multimediaQuestionsList.add(question);
+        }
 
         score = 0;
         scoreTV = (TextView) findViewById(R.id.scoreTV);
@@ -80,8 +89,7 @@ public class Activity_Quiz extends AppCompatActivity {
     }
 
     public void ChangeQuestion(){
-        //myContainer.findViewById(R.id.respuestas);
-        if(numPreg<4)
+        if(numPreg<6)
         {
             Fragment fragment;
             if(!intermedio) {

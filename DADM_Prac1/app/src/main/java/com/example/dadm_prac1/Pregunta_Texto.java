@@ -32,13 +32,13 @@ public class Pregunta_Texto extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private String preguntas[] = new String[] {"¿Qué hace el Creeper?", "¿Cuando se creó Minecraft?", "¿Qué se hace con\neste bloque?", "¿Cómo se conoce al\ncreador del juego?"};
-    private String respuestas1[] = new String[] {"Explotar", "2007", "Valla de piedra", "Notch"};
-    private String respuestas2[] = new String[]{"Curar","2008","Barco", "Miguel"};
-    private String respuestas3[] = new String[]{"Hacer Intercambios","2009","Libro", "Marcos Gomez"};
-    private String respuestas4[] = new String[]{"Teletransportarse","2010","Casco de cuero", "Steve"};
-    private int soluciones[] = new int[]{0,2,1,0};
-    private int[][] combinaciones = new int[][]{new int[]{0, 3, 1, 2}, new int[]{3, 2, 0, 1}, new int[]{1, 2, 0, 3},new int[]{2, 3, 1, 0}};
+    private String preguntas[] = new String[6];
+    private String respuestas1[] = new String[6];
+    private String respuestas2[] = new String[6];
+    private String respuestas3[] = new String[6];
+    private String respuestas4[] = new String[6];
+    private int soluciones[] = new int[6];
+    private int[][] combinaciones = new int[][]{new int[]{0, 3, 1, 4, 2, 5}, new int[]{5, 3, 2, 4, 0, 1}, new int[]{1, 5, 2, 0, 4, 3},new int[]{4, 2, 5, 3, 1, 0}};
 
     int solucion;
 
@@ -76,6 +76,7 @@ public class Pregunta_Texto extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        //Activity_Quiz quiz = (Activity_Quiz) getActivity();
     }
 
     @Override
@@ -90,6 +91,33 @@ public class Pregunta_Texto extends Fragment {
         respuesta3 = (RadioButton) view.findViewById(R.id.respuesta3);
         respuesta4 = (RadioButton) view.findViewById(R.id.respuesta4);
         planks = (ImageView) view.findViewById(R.id.planks);
+
+        int i = 0;
+        for (QuestionsData question:quiz.textQuestionsList)
+        {
+            preguntas[i] = question.getQuestion().trim();
+            respuestas1[i] = question.getAnswer1().trim();
+            respuestas2[i] = question.getAnswer2().trim();
+            respuestas3[i] = question.getAnswer3().trim();
+            respuestas4[i] = question.getAnswer4().trim();
+            switch (question.getCorrectAnswers()){
+                case 0001:
+                    soluciones[i] = 3;
+                    break;
+                case 0010:
+                    soluciones[i] = 2;
+                    break;
+                case 0100:
+                    soluciones[i] = 1;
+                    break;
+                case 1000:
+                    soluciones[i] = 0;
+                    break;
+                default:
+                    break;
+            }
+            i++;
+        }
 
         int random = quiz.getRandom();
         int preg = quiz.getNumPreg();
