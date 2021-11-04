@@ -87,32 +87,40 @@ public class Pregunta_Imagenes extends Fragment {
         imagen2=(ImageView) view.findViewById(R.id.imageView2);
         imagen3=(ImageView) view.findViewById(R.id.imageView3);
 
-        if(quiz.getNumPreg() == 0){
-            pregunta.setText("¿Que criaturas fueron\n eliminadas en 2021?");
-            String idAllay =  Integer.toString(R.drawable.allay);
-            imagen1.setImageResource(Integer.parseInt(idAllay));
-            imagen2.setImageResource(R.drawable.glare);
-            imagen3.setImageResource(R.drawable.golemcobre);
-            respCorrecta = new boolean[]{false, true, true};
-        } else if(quiz.getNumPreg() == 1){
-            pregunta.setText("¿Que picos pueden picar\n la bedrock?");
-            imagen1.setImageResource(R.drawable.picomadera);
-            imagen2.setImageResource(R.drawable.picodiamante);
-            imagen3.setImageResource(R.drawable.picohierro);
-            respCorrecta = new boolean[]{false, false, false};
-        }else if(quiz.getNumPreg() == 2){
-            pregunta.setText("¿En que bloque crece\n la caña de azucar?");
-            imagen1.setImageResource(R.drawable.sand);
-            imagen2.setImageResource(R.drawable.soulsand);
-            imagen3.setImageResource(R.drawable.grass);
-            respCorrecta = new boolean[]{true, false, false};
-        } else {
-            pregunta.setText("¿Con que se puede\ncurar a un lobo\nen Minecraft Vanilla?");
-            imagen1.setImageResource(R.drawable.ternera);
-            imagen2.setImageResource(R.drawable.pezglobo);
-            imagen3.setImageResource(R.drawable.cerdo);
-            respCorrecta = new boolean[]{true, false, true};
-        }
+        QuestionsData question = quiz.imageQuestionsList.get(quiz.getNumPreg());
+
+            pregunta.setText(question.getQuestion().trim());
+            imagen1.setImageResource(Integer.parseInt(question.getAnswer1().trim()));
+            imagen2.setImageResource(Integer.parseInt(question.getAnswer2().trim()));
+            imagen3.setImageResource(Integer.parseInt(question.getAnswer3().trim()));
+            switch (question.getCorrectAnswers()) {
+                case 0000:
+                    respCorrecta = new boolean[]{false, false, false};
+                    break;
+                case 0010:
+                    respCorrecta = new boolean[]{false, false, true};
+                    break;
+                case 0100:
+                    respCorrecta = new boolean[]{false, true, false};
+                    break;
+                case 0110:
+                    respCorrecta = new boolean[]{false, true, true};
+                    break;
+                case 1000:
+                    respCorrecta = new boolean[]{true, false, false};
+                    break;
+                case 1010:
+                    respCorrecta = new boolean[]{true, false, true};
+                    break;
+                case 1100:
+                    respCorrecta = new boolean[]{true, true, false};
+                    break;
+                case 1110:
+                    respCorrecta = new boolean[]{true, true, true};
+                    break;
+                default:
+                    break;
+            }
 
         check = new boolean[]{false, false, false};
         checkAnswer();
@@ -120,9 +128,9 @@ public class Pregunta_Imagenes extends Fragment {
         respuesta1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
-                if(checked){
+                if (checked) {
                     check[0] = true;
-                } else{
+                } else {
                     check[0] = false;
                 }
                 checkAnswer();

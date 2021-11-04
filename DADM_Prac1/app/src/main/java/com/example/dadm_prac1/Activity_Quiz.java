@@ -89,7 +89,15 @@ public class Activity_Quiz extends AppCompatActivity {
     }
 
     public void ChangeQuestion(){
-        if(numPreg<6)
+        int maxPreg;
+
+        if(mode == 0) {
+            maxPreg = textQuestionsList.size();
+        } else {
+            maxPreg = imageQuestionsList.size();
+        }
+
+        if(numPreg<maxPreg)
         {
             Fragment fragment;
             if(!intermedio) {
