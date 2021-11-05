@@ -126,16 +126,37 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         holder.btDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 UserData data = dataList.get(holder.getAdapterPosition());
 
-                database.mainDao().delete(data);
+                Dialog dialog = new Dialog(context);
+                dialog.setContentView(R.layout.dialog_delete);
+                int width = WindowManager.LayoutParams.MATCH_PARENT;
+                int height = WindowManager.LayoutParams.WRAP_CONTENT;
+                dialog.getWindow().setLayout(width, height);
+                Button btSi = (Button) dialog.findViewById(R.id.bt_si);
+                Button btNo = (Button) dialog.findViewById(R.id.bt_no);
+                dialog.show();
 
-                //Notificamos la eliminacion
-                int position = holder.getAdapterPosition();
-                dataList.remove(position);
-                notifyItemRemoved(position);
-                notifyItemRangeChanged(position, dataList.size());
+                btSi.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        database.mainDao().delete(data);
+                        //Notificamos la eliminacion
+                        int position = holder.getAdapterPosition();
+                        dataList.remove(position);
+                        notifyItemRemoved(position);
+                        notifyItemRangeChanged(position, dataList.size());
+                        dialog.dismiss();
+                    }
+                });
 
+                btNo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
             }
         });
 
