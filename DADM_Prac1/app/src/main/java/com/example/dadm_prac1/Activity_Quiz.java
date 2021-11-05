@@ -27,6 +27,7 @@ public class Activity_Quiz extends AppCompatActivity {
     private FragmentContainerView myContainer;
     private boolean acierto, intermedio;
     private TextView scoreTV;
+    private String user;
 
     //Room
     List<QuestionsData> questionsList = new ArrayList<>();
@@ -61,6 +62,7 @@ public class Activity_Quiz extends AppCompatActivity {
         intermedio = false;
         Intent intent = getIntent();
         mode = intent.getIntExtra("Gamemode", -1);
+        user = intent.getStringExtra("User").toString().trim();
 
         Fragment fragment;
         if(mode == 0){
@@ -127,6 +129,7 @@ public class Activity_Quiz extends AppCompatActivity {
             Intent intent = new Intent(this, Activity_Score.class);
             intent.putExtra("Score", score);
             intent.putExtra("Gamemode", mode);
+            intent.putExtra("User", user);
             startActivity(intent);
             finish();
         }

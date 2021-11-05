@@ -3,6 +3,7 @@ package com.example.dadm_prac1;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                finishAffinity();
                 System.exit(0);
             }
         });
@@ -71,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
     public void OpenQuiz(){
         Intent intent = new Intent(this, Activity_Quiz.class);
         intent.putExtra("Gamemode", mode);
+        intent.putExtra("User", user);
         startActivity(intent);
         finish();
     }

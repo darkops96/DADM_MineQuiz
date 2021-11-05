@@ -1,56 +1,56 @@
 package com.example.dadm_prac1;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.EditText;
 
+import java.util.ArrayList;
+import java.util.List;
 
-public class Activity_Score extends AppCompatActivity {
+public class Activity_NewUser extends AppCompatActivity {
 
-    private Button again, exitMenu;
-    private int mode;
-    private String user;
+    EditText editText;
+    Button btConfirm;
+    RoomUsersDB database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_score);
-        Intent intent = getIntent();
-        int score = intent.getIntExtra("Score", -1);
-        mode = intent.getIntExtra("Gamemode", -1);
-        user = intent.getStringExtra("User").toString().trim();
-        TextView scorewT = findViewById(R.id.score);
-        if(score == 1){
-            scorewT.setText("¡Has obtenido\n"+score+" punto!");
-        } else {
-            scorewT.setText("¡Has obtenido\n"+score+" puntos!");
-        }
-        again = (Button) findViewById(R.id.B_Again);
-        again.setOnClickListener(new View.OnClickListener(){
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        setContentView(R.layout.activity_new_user);
+
+        editText = (EditText) findViewById(R.id.editText);
+        btConfirm = (Button) findViewById(R.id.bt_confirm);
+
+        //Inicializamos la base de datos
+        database = RoomUsersDB.getInstance(this);
+
+        btConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){ OpenQuiz();}
-                                 });
-        exitMenu = (Button)findViewById(R.id.B_Exit);
-        exitMenu.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){OpenMenu();}
+            public void onClick(View view) {
+                String sText = editText.getText().toString().trim();
+                if(!sText.equals("")){
+                    UserData data = new UserData();
+                    data.setUsername(sText);
+                    data.setPoints(0);
+                    database.mainDao().insert(data);
+                    editText.setText("");
+
+                    OpenRegister();
+                }
+            }
         });
     }
-    public void OpenQuiz(){
-        Intent intent = new Intent(this, Activity_Quiz.class);
-        intent.putExtra("Gamemode", mode);
-        intent.putExtra("User", user);
-        startActivity(intent);
-        finish();
-    }
-    public void OpenMenu(){
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("User", user);
+
+    public void OpenRegister(){
+        Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
         finish();
     }

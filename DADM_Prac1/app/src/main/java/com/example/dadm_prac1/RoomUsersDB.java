@@ -13,11 +13,11 @@ public abstract class RoomUsersDB extends RoomDatabase {
     //Define database name
     private static String DATABASE_NAME = "Users";
 
-    public synchronized static RoomUsersDB getInstance(Context context){
+    public synchronized static RoomUsersDB getInstance(final Context context){
         //Miramos si ya existe
         if(database == null){
             //Inicializamos la base de datos
-            database = Room.databaseBuilder(context.getApplicationContext(), RoomUsersDB.class, DATABASE_NAME).allowMainThreadQueries().fallbackToDestructiveMigration().build();
+            database = Room.databaseBuilder(context.getApplicationContext(), RoomUsersDB.class, DATABASE_NAME).allowMainThreadQueries().build();
         }
         return database;
     }

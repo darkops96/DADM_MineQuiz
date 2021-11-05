@@ -103,7 +103,6 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         Intent intent = new Intent(context, MainActivity.class);
         intent.putExtra("User", username);
         context.startActivity(intent);
-        context.finish();
     }
 
     @Override

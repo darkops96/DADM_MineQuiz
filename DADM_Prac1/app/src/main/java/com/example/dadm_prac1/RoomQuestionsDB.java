@@ -16,11 +16,11 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
     //Create Dao
     public abstract QuestionsDao questionsDao();
 
-    public synchronized static RoomQuestionsDB getInstance(Context context){
+    public synchronized static RoomQuestionsDB getInstance(final Context context){
         //Miramos si ya existe
         if(database == null){
             //Inicializamos la base de datos
-            database = Room.databaseBuilder(context.getApplicationContext(), RoomQuestionsDB.class, DATABASE_NAME).allowMainThreadQueries().fallbackToDestructiveMigration().build();
+            database = Room.databaseBuilder(context.getApplicationContext(), RoomQuestionsDB.class, DATABASE_NAME).allowMainThreadQueries().build();
 
             //AQUI AÑADIRIAMOS LAS PREGUNTAS PARA LA BD DE PREGUNTAS
             QuestionsData question = new QuestionsData();

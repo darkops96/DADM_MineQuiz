@@ -6,16 +6,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#926C4D"
     android:padding="16dp"
     tools:context=".MainActivity">
 
-    <EditText
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/menuToolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/edit_text"
-        android:hint="Enter text"
-        android:padding="12dp"
-        android:background="@android:drawable/editbox_background"/>
+        android:layout_height="66dp"
+        android:background="?attr/colorPrimary"
+        android:backgroundTint="#526935"
+        android:fontFamily="@font/asap"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Selección de usuario"
+        app:titleTextColor="#FFFFFF" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,7 +35,16 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/bt_add"
-            android:text="Add"/>
+            android:backgroundTint="#526935"
+            android:text="Registro"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/bt_anon"
+            android:backgroundTint="#526935"
+            android:text="Anónimo"/>
 
     </LinearLayout>
 

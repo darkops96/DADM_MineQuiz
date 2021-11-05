@@ -17,8 +17,7 @@ import java.util.List;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText editText;
-    Button btAdd;
+    Button btAdd, btAnon;
     RecyclerView recyclerView;
 
     List<UserData> dataList = new ArrayList<>();
@@ -32,8 +31,8 @@ public class RegisterActivity extends AppCompatActivity {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         setContentView(R.layout.activity_register);
 
-        editText = findViewById(R.id.edit_text);
         btAdd = findViewById(R.id.bt_add);
+        btAnon = findViewById(R.id.bt_anon);
         recyclerView = findViewById(R.id.recycler_view);
 
         //Inicializamos la base de datos
@@ -51,19 +50,28 @@ public class RegisterActivity extends AppCompatActivity {
         btAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String sText = editText.getText().toString().trim();
-                if(!sText.equals("")){
-                    UserData data = new UserData();
-                    data.setUsername(sText);
-                    data.setPoints(0);
-                    database.mainDao().insert(data);
-                    editText.setText("");
-                    dataList.clear();
-                    dataList.addAll(database.mainDao().getAll());
-                    adapter.notifyDataSetChanged();
-                }
+                OpenNewUser();
             }
         });
+
+        btAnon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OpenMenu();
+            }
+        });
+    }
+
+    public void OpenMenu(){
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("User", "Anónimo");
+        startActivity(intent);
+    }
+
+    public void OpenNewUser(){
+        Intent intent = new Intent(this, Activity_NewUser.class);
+        startActivity(intent);
+        finish();
     }
 
     @Override

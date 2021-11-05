@@ -3,24 +3,25 @@
     package="com.example.dadm_prac1">
 
     <application
-        android:allowBackup="false"
+        android:allowBackup="true"
         android:icon="@drawable/luckyblock"
         android:label="MineQuiz"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.DADM_Prac1">
+        android:theme="@style/Theme.DADM_Prac1"
+        android:requestLegacyExternalStorage="true">
+        <activity
+            android:name=".Activity_NewUser"
+            android:exported="true" />
         <activity
             android:name=".RegisterActivity"
-            android:exported="true" >
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-
         <activity
             android:name=".Activity_Ranking"
             android:exported="true" />
@@ -32,8 +33,7 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
 
         <meta-data
             android:name="preloaded_fonts"
