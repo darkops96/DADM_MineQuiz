@@ -7,6 +7,17 @@
     android:layout_margin="8dp"
     android:background="#526935">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="center"
+        android:text="Pulsa para editar \nla imagen"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20dp"/>
+
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

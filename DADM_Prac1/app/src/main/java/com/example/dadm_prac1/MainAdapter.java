@@ -75,8 +75,11 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         else {
             bitmap = BitmapFactory.decodeFile(mainData.getUserPhoto());
         }
-
         holder.photoUser.setImageBitmap(bitmap);
+
+        holder.numGames.setText("Partidas: "+mainData.getTimesPlayed());
+        holder.maxPoint.setText(mainData.getPoints() + " puntos");
+        holder.lastTime.setText(mainData.getLastTime());
 
         holder.btEdit.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -189,7 +192,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView textView;
+        TextView textView, lastTime, maxPoint, numGames;
         ImageView photoUser;
         ImageView btEdit, btDelete, btPlay;
 
@@ -197,6 +200,9 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             super(itemView);
 
             textView = itemView.findViewById(R.id.text_view);
+            lastTime = itemView.findViewById(R.id.fechaPart);
+            maxPoint = itemView.findViewById(R.id.maxPunt);
+            numGames = itemView.findViewById(R.id.numPart);
             btEdit = itemView.findViewById(R.id.bt_edit);
             btDelete = itemView.findViewById(R.id.bt_delete);
             btPlay = itemView.findViewById(R.id.bt_play);
