@@ -5,17 +5,33 @@
     android:id="@+id/edit_text"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity_NewUser">
+    tools:context=".Activity_NewUser"
+    android:background="#926C4D">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/menuToolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:background="?attr/colorPrimary"
+        android:backgroundTint="#526935"
+        android:fontFamily="@font/asap"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Registro"
+        app:titleTextColor="#FFFFFF" />
 
     <EditText
         android:id="@+id/editText"
         android:layout_width="350dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="350dp"
         android:hint="Introduzca nombre de usuario"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="#FFFFFF"/>
 
     <Button
         android:id="@+id/bt_confirm"
@@ -23,6 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Confirm"
+        android:backgroundTint="#526935"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText" />

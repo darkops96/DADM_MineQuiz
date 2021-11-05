@@ -64,7 +64,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void OpenMenu(){
         Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("User", "Anónimo");
+        intent.putExtra("User", "Steve");
         startActivity(intent);
     }
 
@@ -73,7 +73,7 @@ public class RegisterActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-    
+
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);

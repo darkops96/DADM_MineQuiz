@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#926C4D"
-    android:padding="16dp"
     tools:context=".MainActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -21,14 +20,16 @@
         android:theme="?attr/actionBarTheme"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Selección de usuario"
-        app:titleTextColor="#FFFFFF" />
+        app:title="¡Bienvenido a MineQuiz!"
+        app:titleTextColor="#FFFFFF"
+        android:layout_marginTop="0dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="8dp">
+        android:layout_marginTop="8dp"
+        android:padding="16dp">
 
         <Button
             android:layout_width="wrap_content"
@@ -36,7 +37,8 @@
             android:layout_weight="1"
             android:id="@+id/bt_add"
             android:backgroundTint="#526935"
-            android:text="Registro"/>
+            android:text="Registro"
+            android:layout_marginRight="5dp"/>
 
         <Button
             android:layout_width="wrap_content"
@@ -44,7 +46,8 @@
             android:layout_weight="1"
             android:id="@+id/bt_anon"
             android:backgroundTint="#526935"
-            android:text="Anónimo"/>
+            android:text="Anónimo"
+            android:layout_marginLeft="5dp"/>
 
     </LinearLayout>
 
@@ -53,6 +56,7 @@
         android:layout_height="match_parent"
         android:id="@+id/recycler_view"
         android:layout_marginTop="8dp"
-        tools:listitem="@layout/list_row_main"/>
+        tools:listitem="@layout/list_row_main"
+        android:padding="16dp"/>
 
 </LinearLayout>
