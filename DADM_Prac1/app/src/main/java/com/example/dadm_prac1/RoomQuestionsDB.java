@@ -147,6 +147,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setAnswer4("Placa de presión");
             question.setCorrectAnswers(0100);
             question.setType(2);
+            database.questionsDao().insert(question);
             question.setQuestion("¿A qué objeto corresponde este sonido?");
             question.setAnswer1("Arco");
             question.setAnswer2("Cubo de agua");
@@ -154,6 +155,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setAnswer4("Placa de presión");
             question.setCorrectAnswers(0001);
             question.setType(2);
+            database.questionsDao().insert(question);
             question.setQuestion("¿A qué objeto corresponde este sonido?");
             question.setAnswer1("Arco");
             question.setAnswer2("Cubo de agua");
@@ -161,6 +163,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setAnswer4("Placa de presión");
             question.setCorrectAnswers(1000);
             question.setType(2);
+            database.questionsDao().insert(question);
             question.setQuestion("¿A qué objeto corresponde este sonido?");
             question.setAnswer1("Arco");
             question.setAnswer2("Cubo de agua");
@@ -168,6 +171,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setAnswer4("Placa de presión");
             question.setCorrectAnswers(0010);
             question.setType(2);
+            database.questionsDao().insert(question);
             question.setQuestion("¿A qué disco pertenece este sonido?");
             question.setAnswer1("Cat");
             question.setAnswer2("Blocks");
@@ -175,6 +179,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setAnswer4("11");
             question.setCorrectAnswers(0001);
             question.setType(2);
+            database.questionsDao().insert(question);
             question.setQuestion("¿A qué disco pertenece este sonido?");
             question.setAnswer1("Cat");
             question.setAnswer2("Blocks");
@@ -182,6 +187,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setAnswer4("11");
             question.setCorrectAnswers(1000);
             question.setType(2);
+            database.questionsDao().insert(question);
         }
         return database;
     }
