@@ -1,114 +1,42 @@
 package com.example.dadm_prac1;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.content.FileProvider;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
-public class Activity_NewUser extends AppCompatActivity {
-
-    EditText editText;
-    Button btConfirm;
-    ImageButton btPhoto;
-    RoomUsersDB database;
+public class ActivityUpdatePhoto extends AppCompatActivity {
 
     private static final int CAMERA_REQUEST = 1;
     private String photoPath;
+    RoomUsersDB database;
+    String username, oldPhoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        setContentView(R.layout.activity_new_user);
-
-        editText = (EditText) findViewById(R.id.editText);
-        btConfirm = (Button) findViewById(R.id.bt_confirm);
-        btPhoto = (ImageButton) findViewById(R.id.bt_userPhoto);
-
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.minecraft_steve);
-        int width = bitmap.getWidth();
-        int height = bitmap.getHeight();
-        float scaleWidth = ((float) 576) / width;
-        float scaleHeight = ((float) 768) / height;
-        Matrix matrix = new Matrix();
-        matrix.postScale(scaleWidth, scaleHeight);
-        bitmap = Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, false);
-        btPhoto.setImageBitmap(bitmap);
-
-        photoPath = "minecraft_steve";
-
-        //Inicializamos la base de datos
+        setContentView(R.layout.activity_update_photo);
+        username = getIntent().getStringExtra("user");
+        oldPhoto = getIntent().getStringExtra("oldPhoto");
         database = RoomUsersDB.getInstance(this);
-
-        btConfirm.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
-            @Override
-            public void onClick(View view) {
-                String sText = editText.getText().toString().trim();
-                if(!sText.equals("")){
-                    UserData data = new UserData();
-                    data.setUsername(sText);
-                    data.setPoints(0);
-                    data.setTimesPlayed(0);
-
-                    ZoneId spain = ZoneId.of("Europe/Paris");
-                    ZonedDateTime zdt = Instant.now().atZone(spain);
-                    data.setLastTime(zdt.toLocalDate().toString());
-
-                    data.setUserPhoto(photoPath);
-                    database.mainDao().insert(data);
-                    editText.setText("");
-
-                    OpenRegister();
-                }
-            }
-        });
-
-        btPhoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DispatchTakePictureIntent();
-            }
-        });
-    }
-
-    public void OpenRegister(){
-        Intent intent = new Intent(this, RegisterActivity.class);
-        startActivity(intent);
-        finish();
+        DispatchTakePictureIntent();
     }
 
     private void DispatchTakePictureIntent() {
@@ -162,41 +90,15 @@ public class Activity_NewUser extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
             galleryAddPic();
-            setPic();
+            database.mainDao().updatePhoto(username, photoPath);
+            File file = new File(oldPhoto);
+            boolean deleted = file.delete();
+            if(deleted)
+                Toast.makeText(getApplicationContext(), "Foto actualizada", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, RegisterActivity.class);
+            startActivity(intent);
+            finish();
         }
-    }
-
-    private void setPic() {
-        // Get the dimensions of the View
-        int targetW = btPhoto.getWidth();
-        int targetH = btPhoto.getHeight();
-
-        // Get the dimensions of the bitmap
-        BitmapFactory.Options bmOptions = new BitmapFactory.Options();
-        bmOptions.inJustDecodeBounds = true;
-
-        BitmapFactory.decodeFile(photoPath, bmOptions);
-
-        int photoW = bmOptions.outWidth;
-        int photoH = bmOptions.outHeight;
-
-        // Determine how much to scale down the image
-        int scaleFactor = Math.max(1, Math.min(photoW/targetW, photoH/targetH));
-
-        // Decode the image file into a Bitmap sized to fill the View
-        bmOptions.inJustDecodeBounds = false;
-        bmOptions.inSampleSize = scaleFactor;
-        bmOptions.inPurgeable = true;
-
-        Bitmap bitmap = BitmapFactory.decodeFile(photoPath, bmOptions);
-        int width = bitmap.getWidth();
-        int height = bitmap.getHeight();
-        float scaleWidth = ((float) 576) / width;
-        float scaleHeight = ((float) 768) / height;
-        Matrix matrix = new Matrix();
-        matrix.postScale(scaleWidth, scaleHeight);
-        bitmap = Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, false);
-        btPhoto.setImageBitmap(bitmap);
     }
 
     @Override

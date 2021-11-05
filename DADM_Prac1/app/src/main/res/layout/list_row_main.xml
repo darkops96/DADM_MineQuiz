@@ -11,6 +11,12 @@
         android:orientation="horizontal"
         android:padding="16dp">
 
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/user_photo"
+            android:src="@drawable/ic_camera"/>
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"

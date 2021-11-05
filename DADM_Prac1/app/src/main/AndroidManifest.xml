@@ -2,14 +2,24 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.dadm_prac1">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/luckyblock"
         android:label="MineQuiz"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.DADM_Prac1"
-        android:requestLegacyExternalStorage="true">
+        android:theme="@style/Theme.DADM_Prac1">
+        <activity
+            android:name=".ActivityUpdatePhoto"
+            android:exported="true" />
         <activity
             android:name=".Activity_NewUser"
             android:exported="true" />
@@ -33,11 +43,21 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.android.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>

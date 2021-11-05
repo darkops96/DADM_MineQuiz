@@ -3,18 +3,28 @@ package com.example.dadm_prac1;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
@@ -46,29 +56,68 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
         //Seteamos el texto en el textview
         holder.textView.setText(mainData.getUsername());
+        Bitmap bitmap;
+        if(mainData.getUserPhoto().equalsIgnoreCase("minecraft_steve")){
+            bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.minecraft_steve);
+
+            int width = bitmap.getWidth();
+            int height = bitmap.getHeight();
+            float scaleWidth = ((float) 3456) / width;
+            float scaleHeight = ((float) 4608) / height;
+            // CREATE A MATRIX FOR THE MANIPULATION
+            Matrix matrix = new Matrix();
+            // RESIZE THE BIT MAP
+            matrix.postScale(scaleWidth, scaleHeight);
+
+            // "RECREATE" THE NEW BITMAP
+            bitmap = Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, false);
+        }
+        else {
+            bitmap = BitmapFactory.decodeFile(mainData.getUserPhoto());
+        }
+
+        holder.photoUser.setImageBitmap(bitmap);
 
         holder.btEdit.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 UserData data = dataList.get(holder.getAdapterPosition());
-                String sUsername = data.getUsername();
 
                 Dialog dialog = new Dialog(context);
                 dialog.setContentView(R.layout.dialog_update);
                 int width = WindowManager.LayoutParams.MATCH_PARENT;
                 int height = WindowManager.LayoutParams.WRAP_CONTENT;
                 dialog.getWindow().setLayout(width, height);
+
+
+                ImageButton btUpdate = dialog.findViewById(R.id.bt_update);
+
+                Bitmap bitmap;
+                if(mainData.getUserPhoto().equalsIgnoreCase("minecraft_steve")) {
+                    bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.minecraft_steve);
+                } else {
+                    bitmap = BitmapFactory.decodeFile(data.getUserPhoto());
+                }
+                int w = bitmap.getWidth();
+                int h = bitmap.getHeight();
+                float scaleWidth = ((float) 576) / w;
+                float scaleHeight = ((float) 768) / h;
+                Matrix matrix = new Matrix();
+                matrix.postScale(scaleWidth, scaleHeight);
+                bitmap = Bitmap.createBitmap(bitmap, 0, 0, w, h, matrix, false);
+                btUpdate.setImageBitmap(bitmap);
+
                 dialog.show();
-
-                EditText editText = dialog.findViewById(R.id.edit_text);
-                Button btUpdate = dialog.findViewById(R.id.bt_update);
-
-                editText.setText(sUsername);
 
                 btUpdate.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        Intent intent = new Intent(context, ActivityUpdatePhoto.class);
+                        intent.putExtra("user", data.getUsername());
+                        intent.putExtra("oldPhoto", data.getUserPhoto());
+                        context.startActivity(intent);
                         dialog.dismiss();
+                        context.finish();
                     }
                 });
             }
@@ -91,9 +140,17 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         });
 
         holder.btPlay.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
                 UserData data = dataList.get(holder.getAdapterPosition());
+                database.mainDao().updateGames(data.getUsername(),data.getTimesPlayed()+1);
+                ZoneId spain = ZoneId.of("Europe/Paris");
+                ZonedDateTime zdt = Instant.now().atZone(spain);
+                database.mainDao().updateDate(data.getUsername(), zdt.toLocalDate().toString());
+                dataList.clear();
+                dataList.addAll(database.mainDao().getAll());
+                notifyDataSetChanged();
                 OpenMenu(data.getUsername().trim());
             }
         });
@@ -112,6 +169,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView textView;
+        ImageView photoUser;
         ImageView btEdit, btDelete, btPlay;
 
         public ViewHolder(@NonNull View itemView) {
@@ -121,6 +179,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             btEdit = itemView.findViewById(R.id.bt_edit);
             btDelete = itemView.findViewById(R.id.bt_delete);
             btPlay = itemView.findViewById(R.id.bt_play);
+            photoUser = itemView.findViewById(R.id.user_photo);
         }
     }
 }

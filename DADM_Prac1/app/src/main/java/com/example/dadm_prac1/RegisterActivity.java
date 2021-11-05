@@ -73,7 +73,7 @@ public class RegisterActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
+    
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
