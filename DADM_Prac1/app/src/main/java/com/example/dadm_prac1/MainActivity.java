@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button openQuiz, exit, ranking;
+    private Button openQuiz, exit, ranking, btUser;
     private Spinner spinner;
     private int mode;
     private String user;
@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
         user = intent.getStringExtra("User").toString().trim();
         helloUser = (TextView) findViewById(R.id.helloUser);
         helloUser.setText("¡Hola "+user+"!");
+        btUser = (Button) findViewById(R.id.bt_user);
+        btUser.setText(user);
 
         openQuiz = (Button) findViewById(R.id.buttonQuiz);
         openQuiz.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +69,13 @@ public class MainActivity extends AppCompatActivity {
                 mode = 0;
             }
         });
+
+        btUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     public void OpenQuiz(){
@@ -81,6 +90,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
+    @Override
+    public void onBackPressed() {}
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
