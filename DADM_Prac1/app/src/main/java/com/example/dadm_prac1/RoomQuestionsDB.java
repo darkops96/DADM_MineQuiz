@@ -6,6 +6,9 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Database(entities = {QuestionsData.class}, version = 1, exportSchema = false)
 public abstract class RoomQuestionsDB extends RoomDatabase {
     //Create database instance
@@ -21,7 +24,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
         if(database == null){
             //Inicializamos la base de datos
             database = Room.databaseBuilder(context.getApplicationContext(), RoomQuestionsDB.class, DATABASE_NAME).allowMainThreadQueries().build();
-
+            database.questionsDao().reset(database.questionsDao().getAll());
             //AQUI AÑADIRIAMOS LAS PREGUNTAS PARA LA BD DE PREGUNTAS
             QuestionsData question = new QuestionsData();
             question.setQuestion("¿Qué hace el Creeper?");
