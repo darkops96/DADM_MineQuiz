@@ -38,6 +38,10 @@ public class QuestionsData implements Serializable {
     @ColumnInfo(name = "Correct Answers")
     private int correctAnswers;
 
+    //Guarda el audio a reproducir
+    @ColumnInfo(name = "Audio Selection")
+    private int audio;
+
     //Guarda el tipo de pregunta
     @ColumnInfo(name = "Question type")
     private int type;
@@ -104,5 +108,13 @@ public class QuestionsData implements Serializable {
 
     public void setType(int type) {
         this.type = type;
+    }
+
+    public int getAudio() {
+        return audio;
+    }
+
+    public void setAudio(int audio) {
+        this.audio = audio;
     }
 }

@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view){ OpenRank();}
         });
         spinner = (Spinner) findViewById(R.id.spinner);
-        String[] gamemode = new String[]{"Preguntas Texto", "Preguntas Imágenes"};
+        String[] gamemode = new String[]{"Preguntas Texto", "Preguntas Imágenes", "Preguntas Multimedia"};
         spinner.setAdapter(new ArrayAdapter<String>(this, R.layout.spinner_item,gamemode));
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
