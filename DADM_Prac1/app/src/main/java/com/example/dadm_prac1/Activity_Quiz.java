@@ -66,8 +66,11 @@ public class Activity_Quiz extends AppCompatActivity {
         if(mode == 0){
             fragment = new Pregunta_Texto();
         }
-        else{
+        else if(mode==1){
             fragment = new Pregunta_Imagenes();
+        }
+        else{
+            fragment = new Pregunta_Multimedia();
         }
 
         FragmentManager fm = getSupportFragmentManager();

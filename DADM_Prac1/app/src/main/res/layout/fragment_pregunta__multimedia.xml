@@ -8,21 +8,10 @@
     tools:context=".Pregunta_Multimedia">
 
 
-    <ImageView
-        android:id="@+id/planks"
-        android:layout_width="117dp"
-        android:layout_height="117dp"
-        android:layout_marginTop="224dp"
-        android:src="@drawable/planks"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/TV_Pregunta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="480dp"
         android:fontFamily="@font/asap"
         android:text="Pregunta"
         android:textAlignment="center"
@@ -33,9 +22,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.231" />
 
     <TableRow
+        android:id="@+id/tableRow"
         android:layout_width="205dp"
         android:layout_height="197dp"
         android:layout_marginStart="100dp"
@@ -89,5 +81,35 @@
                 android:textStyle="bold" />
         </RadioGroup>
     </TableRow>
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="183dp"
+        android:layout_height="42dp"
+        app:layout_constraintBottom_toTopOf="@+id/tableRow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TV_Pregunta"
+        app:layout_constraintVertical_bias="0.529" />
+
+    <Button
+        android:id="@+id/B_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="212dp"
+        android:text="PLAY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/B_stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="212dp"
+        android:layout_marginEnd="60dp"
+        android:text="STOP"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

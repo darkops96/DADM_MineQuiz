@@ -29,6 +29,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setCorrectAnswers(1000);
             question.setType(0);
             database.questionsDao().insert(question);
+
             question.setQuestion("¿Cuándo se creó Minecraft?");
             question.setAnswer1("2007");
             question.setAnswer2("2008");
@@ -37,6 +38,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setCorrectAnswers(0010);
             question.setType(0);
             database.questionsDao().insert(question);
+
             question.setQuestion("¿Qué se hace con \neste bloque?");
             question.setAnswer1("Valla de piedra");
             question.setAnswer2("Barco");
@@ -45,6 +47,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setCorrectAnswers(0100);
             question.setType(0);
             database.questionsDao().insert(question);
+
             question.setQuestion("¿Cómo se conoce al\ncreador del juego?");
             question.setAnswer1("Notch");
             question.setAnswer2("Miguel");
@@ -53,6 +56,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setCorrectAnswers(1000);
             question.setType(0);
             database.questionsDao().insert(question);
+
             question.setQuestion("¿Cuál de estás habilidades \nno tiene ningún mob?");
             question.setAnswer1("Volar");
             question.setAnswer2("Usar el arco");
@@ -61,6 +65,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setCorrectAnswers(0001);
             question.setType(0);
             database.questionsDao().insert(question);
+
             question.setQuestion("¿Cómo puedes saber la vida \nque tiene tu lobo sin usar ningún mod?");
             question.setAnswer1("Viendo sus orejas");
             question.setAnswer2("No se puede");
@@ -79,6 +84,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setCorrectAnswers(0110);
             question.setType(1);
             database.questionsDao().insert(question);
+
             question.setQuestion("¿Qué picos pueden picar\n la bedrock?");
             question.setAnswer1(Integer.toString(R.drawable.picomadera));
             question.setAnswer2(Integer.toString(R.drawable.picodiamante));
@@ -87,6 +93,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setCorrectAnswers(0000);
             question.setType(1);
             database.questionsDao().insert(question);
+
             question.setQuestion("¿En qué bloque crece\n la caña de azucar?");
             question.setAnswer1(Integer.toString(R.drawable.sand));
             question.setAnswer2(Integer.toString(R.drawable.soulsand));
@@ -95,6 +102,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setCorrectAnswers(1000);
             question.setType(1);
             database.questionsDao().insert(question);
+
             question.setQuestion("¿Con qué se puede\ncurar a un lobo\nen Minecraft Vanilla?");
             question.setAnswer1(Integer.toString(R.drawable.ternera));
             question.setAnswer2(Integer.toString(R.drawable.pezglobo));
@@ -112,7 +120,9 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setAnswer4("Zombie");
             question.setCorrectAnswers(0010);
             question.setType(2);
+            question.setAudio(R.raw.skeleton);
             database.questionsDao().insert(question);
+
             question.setQuestion("¿A qué mob corresponde este sonido?");
             question.setAnswer1("Esqueleto");
             question.setAnswer2("Calamar");
@@ -121,6 +131,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setCorrectAnswers(0001);
             question.setType(2);
             database.questionsDao().insert(question);
+
             question.setQuestion("¿A qué mob corresponde este sonido?");
             question.setAnswer1("Enderman");
             question.setAnswer2("Cerdo");
@@ -129,6 +140,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setCorrectAnswers(0100);
             question.setType(2);
             database.questionsDao().insert(question);
+
             question.setQuestion("¿A qué mob corresponde este sonido?");
             question.setAnswer1("Lobo");
             question.setAnswer2("Aldeano");
@@ -137,6 +149,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setCorrectAnswers(0001);
             question.setType(2);
             database.questionsDao().insert(question);
+
             question.setQuestion("¿A qué objeto corresponde este sonido?");
             question.setAnswer1("Arco");
             question.setAnswer2("Cubo de agua");
@@ -144,6 +157,8 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setAnswer4("Placa de presión");
             question.setCorrectAnswers(0100);
             question.setType(2);
+            database.questionsDao().insert(question);
+
             question.setQuestion("¿A qué objeto corresponde este sonido?");
             question.setAnswer1("Arco");
             question.setAnswer2("Cubo de agua");
@@ -151,6 +166,8 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setAnswer4("Placa de presión");
             question.setCorrectAnswers(0001);
             question.setType(2);
+            database.questionsDao().insert(question);
+
             question.setQuestion("¿A qué objeto corresponde este sonido?");
             question.setAnswer1("Arco");
             question.setAnswer2("Cubo de agua");
@@ -158,6 +175,8 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setAnswer4("Placa de presión");
             question.setCorrectAnswers(1000);
             question.setType(2);
+            database.questionsDao().insert(question);
+
             question.setQuestion("¿A qué objeto corresponde este sonido?");
             question.setAnswer1("Arco");
             question.setAnswer2("Cubo de agua");
@@ -165,6 +184,8 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setAnswer4("Placa de presión");
             question.setCorrectAnswers(0010);
             question.setType(2);
+            database.questionsDao().insert(question);
+
             question.setQuestion("¿A qué disco pertenece este sonido?");
             question.setAnswer1("Cat");
             question.setAnswer2("Blocks");
@@ -172,6 +193,8 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setAnswer4("11");
             question.setCorrectAnswers(0001);
             question.setType(2);
+            database.questionsDao().insert(question);
+
             question.setQuestion("¿A qué disco pertenece este sonido?");
             question.setAnswer1("Cat");
             question.setAnswer2("Blocks");
@@ -179,6 +202,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setAnswer4("11");
             question.setCorrectAnswers(1000);
             question.setType(2);
+            database.questionsDao().insert(question);
 
         }
 
