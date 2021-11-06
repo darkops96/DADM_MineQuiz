@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finishAffinity();
-                System.exit(0);
             }
         });
         ranking = (Button) findViewById(R.id.B_rank);
