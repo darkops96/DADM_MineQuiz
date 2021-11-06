@@ -43,4 +43,8 @@ public interface UserDao {
     //Get all data query
     @Query("SELECT * FROM users")
     List<UserData> getAll();
+
+    //Get user points query
+    @Query("SELECT Puntuacion FROM users WHERE username = :sUsername")
+    int getPoints(String sUsername);
 }

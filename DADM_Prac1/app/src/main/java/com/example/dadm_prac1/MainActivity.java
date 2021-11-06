@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         btUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                OpenRegister();
             }
         });
     }
@@ -87,6 +87,12 @@ public class MainActivity extends AppCompatActivity {
     }
     public void OpenRank(){
         Intent intent = new Intent(this, Activity_Ranking.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void OpenRegister(){
+        Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
         finish();
     }

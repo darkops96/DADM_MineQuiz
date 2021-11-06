@@ -79,19 +79,27 @@ public class Activity_NewUser extends AppCompatActivity {
             public void onClick(View view) {
                 String sText = editText.getText().toString().trim();
                 if(!sText.equals("")){
-                    UserData data = new UserData();
-                    data.setUsername(sText);
-                    data.setPoints(0);
-                    data.setTimesPlayed(0);
+                    if(!sText.equals("Steve")) {
+                        UserData data = new UserData();
+                        data.setUsername(sText);
+                        data.setPoints(0);
+                        data.setTimesPlayed(0);
 
-                    ZoneId spain = ZoneId.of("Europe/Paris");
-                    ZonedDateTime zdt = Instant.now().atZone(spain);
-                    data.setLastTime(zdt.toLocalDate().toString());
+                        ZoneId spain = ZoneId.of("Europe/Paris");
+                        ZonedDateTime zdt = Instant.now().atZone(spain);
+                        data.setLastTime(zdt.toLocalDate().toString());
 
-                    data.setUserPhoto(photoPath);
-                    database.mainDao().insert(data);
-                    editText.setText("");
+                        data.setUserPhoto(photoPath);
+                        database.mainDao().insert(data);
+                        editText.setText("");
 
+                        OpenRegister();
+                    }
+                    else {
+                        Toast.makeText(getApplicationContext(), "Introduzca un\nnombre válido", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), "Ningún usuario creado", Toast.LENGTH_SHORT).show();
                     OpenRegister();
                 }
             }

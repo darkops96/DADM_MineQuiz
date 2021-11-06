@@ -15,21 +15,31 @@ public class Activity_Score extends AppCompatActivity {
     private Button again, exitMenu;
     private int mode;
     private String user;
+    private RoomUsersDB database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
+        database = RoomUsersDB.getInstance(this);
         Intent intent = getIntent();
         int score = intent.getIntExtra("Score", -1);
         mode = intent.getIntExtra("Gamemode", -1);
         user = intent.getStringExtra("User").toString().trim();
         TextView scorewT = findViewById(R.id.score);
         if(score == 1){
-            scorewT.setText("¡Has obtenido\n"+score+" punto!");
+            scorewT.setText("¡Has obtenido \n"+score+" punto!");
         } else {
-            scorewT.setText("¡Has obtenido\n"+score+" puntos!");
+            scorewT.setText("¡Has obtenido \n"+score+" puntos!");
         }
+
+        if(!user.equals("Steve")) {
+            int oldPoints = database.mainDao().getPoints(user);
+            if (oldPoints < score) {
+                database.mainDao().updatePoints(user, score);
+            }
+        }
+
         again = (Button) findViewById(R.id.B_Again);
         again.setOnClickListener(new View.OnClickListener(){
             @Override
