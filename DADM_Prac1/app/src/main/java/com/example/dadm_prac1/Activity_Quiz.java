@@ -113,6 +113,8 @@ public class Activity_Quiz extends AppCompatActivity {
                 fragment = new Pregunta_Imagenes();
             } else{
                 fragment = new Pregunta_Multimedia();
+
+
             }
             acierto = false;
             FragmentManager fm = getSupportFragmentManager();

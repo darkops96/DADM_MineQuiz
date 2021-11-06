@@ -120,7 +120,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setAnswer4("Zombie");
             question.setCorrectAnswers(0010);
             question.setType(2);
-            question.setAudio(R.raw.skeleton);
+            question.setAudio(R.raw.creeper);
             database.questionsDao().insert(question);
 
             question.setQuestion("¿A qué mob corresponde este sonido?");
@@ -130,6 +130,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setAnswer4("Lobo");
             question.setCorrectAnswers(0001);
             question.setType(2);
+            question.setAudio(R.raw.wolf);
             database.questionsDao().insert(question);
 
             question.setQuestion("¿A qué mob corresponde este sonido?");
@@ -139,6 +140,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setAnswer4("Zombie");
             question.setCorrectAnswers(0100);
             question.setType(2);
+            question.setAudio(R.raw.pig);
             database.questionsDao().insert(question);
 
             question.setQuestion("¿A qué mob corresponde este sonido?");
@@ -148,6 +150,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setAnswer4("Zombie");
             question.setCorrectAnswers(0001);
             question.setType(2);
+            question.setAudio(R.raw.zombie);
             database.questionsDao().insert(question);
 
             question.setQuestion("¿A qué objeto corresponde este sonido?");
@@ -157,6 +160,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setAnswer4("Placa de presión");
             question.setCorrectAnswers(0100);
             question.setType(2);
+            question.setAudio(R.raw.water_bucket);
             database.questionsDao().insert(question);
 
             question.setQuestion("¿A qué objeto corresponde este sonido?");
@@ -166,6 +170,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setAnswer4("Placa de presión");
             question.setCorrectAnswers(0001);
             question.setType(2);
+            question.setAudio(R.raw.pressure_plate);
             database.questionsDao().insert(question);
 
             question.setQuestion("¿A qué objeto corresponde este sonido?");
@@ -175,6 +180,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setAnswer4("Placa de presión");
             question.setCorrectAnswers(1000);
             question.setType(2);
+            question.setAudio(R.raw.arrow);
             database.questionsDao().insert(question);
 
             question.setQuestion("¿A qué objeto corresponde este sonido?");
@@ -184,6 +190,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setAnswer4("Placa de presión");
             question.setCorrectAnswers(0010);
             question.setType(2);
+            question.setAudio(R.raw.piston);
             database.questionsDao().insert(question);
 
             question.setQuestion("¿A qué disco pertenece este sonido?");
@@ -193,6 +200,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setAnswer4("11");
             question.setCorrectAnswers(0001);
             question.setType(2);
+            question.setAudio(R.raw.eleven);
             database.questionsDao().insert(question);
 
             question.setQuestion("¿A qué disco pertenece este sonido?");
@@ -202,6 +210,57 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setAnswer4("11");
             question.setCorrectAnswers(1000);
             question.setType(2);
+            question.setAudio(R.raw.cat);
+            database.questionsDao().insert(question);
+
+            question.setQuestion("¿A qué acción corresponde este sonido?");
+            question.setAnswer1("Beber una poción");
+            question.setAnswer2("Comer");
+            question.setAnswer3("Romper un cristal");
+            question.setAnswer4("Ponerse la armadura");
+            question.setCorrectAnswers(1000);
+            question.setType(2);
+            question.setAudio(R.raw.potion);
+            database.questionsDao().insert(question);
+
+            question.setQuestion("¿A qué acción corresponde este sonido?");
+            question.setAnswer1("Beber una poción");
+            question.setAnswer2("Comer");
+            question.setAnswer3("Romper un cristal");
+            question.setAnswer4("Ponerse la armadura");
+            question.setCorrectAnswers(0100);
+            question.setType(2);
+            question.setAudio(R.raw.eating);
+            database.questionsDao().insert(question);
+
+            question.setQuestion("¿A qué mob corresponde este sonido?");
+            question.setAnswer1("Aldeano");
+            question.setAnswer2("Enderman");
+            question.setAnswer3("Esqueleto");
+            question.setAnswer4("Calamar");
+            question.setCorrectAnswers(0100);
+            question.setType(2);
+            question.setAudio(R.raw.enderman);
+            database.questionsDao().insert(question);
+
+            question.setQuestion("¿A qué mob corresponde este sonido?");
+            question.setAnswer1("Aldeano");
+            question.setAnswer2("Enderman");
+            question.setAnswer3("Esqueleto");
+            question.setAnswer4("Calamar");
+            question.setCorrectAnswers(0010);
+            question.setType(2);
+            question.setAudio(R.raw.skeleton);
+            database.questionsDao().insert(question);
+
+            question.setQuestion("¿A qué mob corresponde este sonido?");
+            question.setAnswer1("Aldeano");
+            question.setAnswer2("Enderman");
+            question.setAnswer3("Esqueleto");
+            question.setAnswer4("Calamar");
+            question.setCorrectAnswers(1000);
+            question.setType(2);
+            question.setAudio(R.raw.villager);
             database.questionsDao().insert(question);
 
         }

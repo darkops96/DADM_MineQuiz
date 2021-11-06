@@ -35,13 +35,14 @@ public class Pregunta_Multimedia extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    int numMaxPregs = 5;
+    int numMaxPregs = 15;
     private String preguntas[] = new String[numMaxPregs];
     private String respuestas1[] = new String[numMaxPregs];
     private String respuestas2[] = new String[numMaxPregs];
     private String respuestas3[] = new String[numMaxPregs];
     private String respuestas4[] = new String[numMaxPregs];
     private int soluciones[] = new int[numMaxPregs];
+    private int sounds[] = new int[numMaxPregs];
 
     int solucion;
 
@@ -49,7 +50,7 @@ public class Pregunta_Multimedia extends Fragment {
     RadioButton respuesta1, respuesta2, respuesta3, respuesta4;
     RadioGroup respuestas;
     SeekBar seekbar;
-    MediaPlayer mediaPlayer;
+    public MediaPlayer mediaPlayer;
     Button playB, stopB;
     Handler handler = new Handler();
 
@@ -85,6 +86,11 @@ public class Pregunta_Multimedia extends Fragment {
 
 
     }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mediaPlayer.stop();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -113,31 +119,6 @@ public class Pregunta_Multimedia extends Fragment {
             }
         });
 
-        mediaPlayer = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.skeleton);
-
-        seekbar = (SeekBar) view.findViewById(R.id.seekBar);
-
-        seekbar.setMax(mediaPlayer.getDuration());
-        seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if(fromUser){
-                    mediaPlayer.seekTo(progress);
-                }
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-
-
         int i = 0;
         for (QuestionsData question:quiz.multimediaQuestionsList)
         {
@@ -146,6 +127,7 @@ public class Pregunta_Multimedia extends Fragment {
             respuestas2[i] = question.getAnswer2().trim();
             respuestas3[i] = question.getAnswer3().trim();
             respuestas4[i] = question.getAnswer4().trim();
+            sounds[i] = question.getAudio();
             switch (question.getCorrectAnswers()){
                 case 0001:
                     soluciones[i] = 3;
@@ -173,6 +155,29 @@ public class Pregunta_Multimedia extends Fragment {
         respuesta2.setText(respuestas2[preg]);
         respuesta3.setText(respuestas3[preg]);
         respuesta4.setText(respuestas4[preg]);
+        int audio = sounds[preg];
+        mediaPlayer = MediaPlayer.create(getActivity().getApplicationContext(), audio);
+        seekbar = (SeekBar) view.findViewById(R.id.seekBar);
+
+        seekbar.setMax(mediaPlayer.getDuration());
+        seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                if(fromUser){
+                    mediaPlayer.seekTo(progress);
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
 
         respuestas.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -204,23 +209,8 @@ public class Pregunta_Multimedia extends Fragment {
     }
 
     public void pauseAudio(View view){
-        mediaPlayer.pause();
-    }
-
-    public void doRewind(View view){
-        int SUB_TIME = 5000;
-        int curPosition = mediaPlayer.getCurrentPosition();
-        if(curPosition - SUB_TIME>0){
-            mediaPlayer.seekTo(curPosition-SUB_TIME);
-        }
-    }
-
-    public void doNext(View view){
-        int ADD_TIME = 5000;
-        int curPosition = mediaPlayer.getCurrentPosition();
-        int duration = mediaPlayer.getDuration();
-        if(curPosition+ADD_TIME<duration){
-            mediaPlayer.seekTo(curPosition+ADD_TIME);
+        if(mediaPlayer.isPlaying()) {
+            mediaPlayer.pause();
         }
     }
 }
