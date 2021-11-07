@@ -47,4 +47,8 @@ public interface UserDao {
     //Get user points query
     @Query("SELECT Puntuacion FROM users WHERE username = :sUsername")
     int getPoints(String sUsername);
+
+    //Get user times played query
+    @Query("SELECT PartidasJugadas FROM users WHERE username = :sUsername")
+    int getTimes(String sUsername);
 }

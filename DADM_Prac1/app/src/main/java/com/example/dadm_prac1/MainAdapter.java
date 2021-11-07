@@ -168,7 +168,6 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             @Override
             public void onClick(View view) {
                 UserData data = dataList.get(holder.getAdapterPosition());
-                database.mainDao().updateGames(data.getUsername(),data.getTimesPlayed()+1);
                 ZoneId spain = ZoneId.of("Europe/Paris");
                 ZonedDateTime zdt = Instant.now().atZone(spain);
                 database.mainDao().updateDate(data.getUsername(), zdt.toLocalDate().toString());

@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private int mode;
     private String user;
     private TextView helloUser;
+    RoomUsersDB database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         mode = 0;
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         setContentView(R.layout.activity_main);
+        database = RoomUsersDB.getInstance(this);
         Intent intent = getIntent();
         user = intent.getStringExtra("User").toString().trim();
         helloUser = (TextView) findViewById(R.id.helloUser);
@@ -78,6 +80,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void OpenQuiz(){
+
+        if(!user.equals("Steve")) {
+            database.mainDao().updateGames(user, database.mainDao().getTimes(user) + 1);
+        }
+
         Intent intent = new Intent(this, Activity_Quiz.class);
         intent.putExtra("Gamemode", mode);
         intent.putExtra("User", user);
@@ -86,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void OpenRank(){
         Intent intent = new Intent(this, Activity_Ranking.class);
+        intent.putExtra("User", user);
         startActivity(intent);
         finish();
     }
