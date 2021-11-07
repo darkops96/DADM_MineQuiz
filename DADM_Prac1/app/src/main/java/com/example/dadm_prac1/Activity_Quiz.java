@@ -17,8 +17,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Activity_Quiz extends AppCompatActivity {
 
@@ -28,6 +32,7 @@ public class Activity_Quiz extends AppCompatActivity {
     private boolean acierto, intermedio;
     private TextView scoreTV;
     private String user;
+    private TextView timerText;
 
     //Room
     List<QuestionsData> questionsList = new ArrayList<>();
@@ -36,10 +41,20 @@ public class Activity_Quiz extends AppCompatActivity {
     public List<QuestionsData> multimediaQuestionsList = new ArrayList<>();
     RoomQuestionsDB questionsDB;
 
+    Timer timer;
+    TimerTask timerTask;
+    Double time = 0.0;
+    int finalTime;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+
+        timerText = (TextView) findViewById(R.id.timer);
+        timer = new Timer();
+
+
 
         questionsDB = RoomQuestionsDB.getInstance(this);
         questionsList = questionsDB.questionsDao().getAll();
@@ -88,6 +103,7 @@ public class Activity_Quiz extends AppCompatActivity {
                 ChangeQuestion();
             }
         });
+        startTimer();
     }
 
     public void ChangeQuestion(){
@@ -127,7 +143,7 @@ public class Activity_Quiz extends AppCompatActivity {
         else
         {
             Intent intent = new Intent(this, Activity_Score.class);
-            intent.putExtra("Score", score);
+            intent.putExtra("Score", (int) Math.round(score*100/finalTime));
             intent.putExtra("Gamemode", mode);
             intent.putExtra("User", user);
             startActivity(intent);
@@ -163,5 +179,28 @@ public class Activity_Quiz extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
             }
         }
+    }
+    private void startTimer(){
+        timerTask = new TimerTask(){
+            @Override
+            public void run(){
+                time++;
+                timerText.setText(getTimerText());
+            }
+        };
+        timer.scheduleAtFixedRate(timerTask,0,1000);
+    }
+    private String getTimerText(){
+        int rounded = (int) Math.round(time);
+
+        int seconds = ((rounded % 86400)%3600)%60;
+        int minutes = ((rounded%86400)%3600)/60;
+
+        finalTime =  minutes*60 + seconds;
+        return formatTime(seconds, minutes);
+    }
+
+    private String formatTime(int seconds, int minutes){
+        return String.format("Time:  " + String.format("%02d",minutes)+":"+String.format("%02d",seconds));
     }
 }
