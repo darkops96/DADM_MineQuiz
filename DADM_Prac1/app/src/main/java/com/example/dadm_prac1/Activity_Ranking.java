@@ -48,25 +48,27 @@ public class Activity_Ranking extends AppCompatActivity {
 
         listDatos=new ArrayList<String>();
         List<UserData> orderUsersList = new ArrayList<>();
-        orderUsersList.add(usersList.get(0));
-        int totalUsers = usersList.size();
-        usersList.remove(0);
-        int aux = 0;
-        while (orderUsersList.size() < totalUsers) {
-            if (usersList.get(aux).getPoints() > orderUsersList.get(0).getPoints()) {
-                orderUsersList.add(0, usersList.get(aux));
-                usersList.remove(aux);
-            } else if (usersList.get(aux).getPoints() == orderUsersList.get(0).getPoints()) {
-                orderUsersList.add(1, usersList.get(aux));
-                usersList.remove(aux);
-            } else if (usersList.size() == 1){
-                orderUsersList.add(usersList.get(aux));
-                usersList.remove(aux);
-            }
-            if(aux < usersList.size()-1){
-                aux++;
-            } else {
-                aux = 0;
+        if(!usersList.isEmpty()) {
+            orderUsersList.add(usersList.get(0));
+            int totalUsers = usersList.size();
+            usersList.remove(0);
+            int aux = 0;
+            while (orderUsersList.size() < totalUsers) {
+                if (usersList.get(aux).getPoints() > orderUsersList.get(0).getPoints()) {
+                    orderUsersList.add(0, usersList.get(aux));
+                    usersList.remove(aux);
+                } else if (usersList.get(aux).getPoints() == orderUsersList.get(0).getPoints()) {
+                    orderUsersList.add(1, usersList.get(aux));
+                    usersList.remove(aux);
+                } else if (usersList.size() == 1) {
+                    orderUsersList.add(usersList.get(aux));
+                    usersList.remove(aux);
+                }
+                if (aux < usersList.size() - 1) {
+                    aux++;
+                } else {
+                    aux = 0;
+                }
             }
         }
 
