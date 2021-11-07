@@ -31,13 +31,13 @@ public class Pregunta_Texto extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
-    private String preguntas[] = new String[6];
-    private String respuestas1[] = new String[6];
-    private String respuestas2[] = new String[6];
-    private String respuestas3[] = new String[6];
-    private String respuestas4[] = new String[6];
-    private int soluciones[] = new int[6];
+    int maxPreg = 15;
+    private String preguntas[] = new String[maxPreg];
+    private String respuestas1[] = new String[maxPreg];
+    private String respuestas2[] = new String[maxPreg];
+    private String respuestas3[] = new String[maxPreg];
+    private String respuestas4[] = new String[maxPreg];
+    private int soluciones[] = new int[maxPreg];
 
     int solucion;
 

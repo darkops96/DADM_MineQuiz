@@ -27,6 +27,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             database.questionsDao().reset(database.questionsDao().getAll());
             //AQUI AÑADIRIAMOS LAS PREGUNTAS PARA LA BD DE PREGUNTAS
             QuestionsData question = new QuestionsData();
+            //1
             question.setQuestion("¿Qué hace el Creeper?");
             question.setAnswer1("Explotar");
             question.setAnswer2("Curar");
@@ -35,7 +36,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setCorrectAnswers(1000);
             question.setType(0);
             database.questionsDao().insert(question);
-
+            //2
             question.setQuestion("¿Cuándo se creó Minecraft?");
             question.setAnswer1("2007");
             question.setAnswer2("2008");
@@ -44,7 +45,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setCorrectAnswers(0010);
             question.setType(0);
             database.questionsDao().insert(question);
-
+            //3
             question.setQuestion("¿Qué se hace con \neste bloque?");
             question.setAnswer1("Valla de piedra");
             question.setAnswer2("Barco");
@@ -53,7 +54,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setCorrectAnswers(0100);
             question.setType(0);
             database.questionsDao().insert(question);
-
+            //4
             question.setQuestion("¿Cómo se conoce al\ncreador del juego?");
             question.setAnswer1("Notch");
             question.setAnswer2("Miguel");
@@ -62,7 +63,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setCorrectAnswers(1000);
             question.setType(0);
             database.questionsDao().insert(question);
-
+            //5
             question.setQuestion("¿Cuál de estás habilidades \nno tiene ningún mob?");
             question.setAnswer1("Volar");
             question.setAnswer2("Usar el arco");
@@ -71,7 +72,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setCorrectAnswers(0001);
             question.setType(0);
             database.questionsDao().insert(question);
-
+            //6
             question.setQuestion("¿Cómo puedes saber la vida \nque tiene tu lobo sin usar ningún mod?");
             question.setAnswer1("Viendo sus orejas");
             question.setAnswer2("No se puede");
@@ -80,8 +81,90 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setCorrectAnswers(0010);
             question.setType(0);
             database.questionsDao().insert(question);
+            //7
+            question.setQuestion("¿Qué lenguaje de programación \n se utilizó para crear la primera\n versión de Minecraft?");
+            question.setAnswer1("Java");
+            question.setAnswer2("Python");
+            question.setAnswer3("Aragonés");
+            question.setAnswer4("Francés");
+            question.setCorrectAnswers(1000);
+            question.setType(0);
+            database.questionsDao().insert(question);
+            //8
+            question.setQuestion("¿En qué consola NO se ha lanzado Minecraft?");
+            question.setAnswer1("Wii");
+            question.setAnswer2("PSVita");
+            question.setAnswer3("Xbox");
+            question.setAnswer4("PS4");
+            question.setCorrectAnswers(1000);
+            question.setType(0);
+            database.questionsDao().insert(question);
+            //9
+            question.setQuestion("¿En qué país se encuentra \n la empresa que ha desarrollado el juego?");
+            question.setAnswer1("Finlandia");
+            question.setAnswer2("Suecia");
+            question.setAnswer3("País Vasco");
+            question.setAnswer4("Perú");
+            question.setCorrectAnswers(0100);
+            question.setType(0);
+            database.questionsDao().insert(question);
+            //10
+            question.setQuestion("¿Cuál es el género del juego?");
+            question.setAnswer1("Sandbox");
+            question.setAnswer2("FPS");
+            question.setAnswer3("RPG");
+            question.setAnswer4("Shoot'em up");
+            question.setCorrectAnswers(1000);
+            question.setType(0);
+            database.questionsDao().insert(question);
+            //11
+            question.setQuestion("¿Qué compañía compró Mojang?");
+            question.setAnswer1("Apple");
+            question.setAnswer2("Sony");
+            question.setAnswer3("Nestle");
+            question.setAnswer4("Microsoft");
+            question.setCorrectAnswers(0001);
+            question.setType(0);
+            database.questionsDao().insert(question);
+            //12
+            question.setQuestion("Un día en el juego equivale a...");
+            question.setAnswer1("5 minutos en la realidad");
+            question.setAnswer2("10 minutos en la realidad");
+            question.setAnswer3("15 minutos en la realidad");
+            question.setAnswer4("20 minutos en la realidad");
+            question.setCorrectAnswers(0001);
+            question.setType(0);
+            database.questionsDao().insert(question);
+            //13
+            question.setQuestion("¿Qué hace un enderman?");
+            question.setAnswer1("Teletransportarse");
+            question.setAnswer2("Disparar flechas");
+            question.setAnswer3("Explotar");
+            question.setAnswer4("Dar leche");
+            question.setCorrectAnswers(1000);
+            question.setType(0);
+            database.questionsDao().insert(question);
+            //14
+            question.setQuestion("¿Cuantos diamantes necesitas\n para hacer una pechera de diamantes?");
+            question.setAnswer1("6");
+            question.setAnswer2("9");
+            question.setAnswer3("8");
+            question.setAnswer4("7");
+            question.setCorrectAnswers(0010);
+            question.setType(0);
+            database.questionsDao().insert(question);
+            //15
+            question.setQuestion("¿Qué mob da mayor cantidad de experiencia?");
+            question.setAnswer1("Creeper");
+            question.setAnswer2("Blaze");
+            question.setAnswer3("Ghast");
+            question.setAnswer4("Zombie");
+            question.setCorrectAnswers(0010);
+            question.setType(0);
+            database.questionsDao().insert(question);
 
             //Preguntas con respuesta con imagen:
+            //1
             question.setQuestion("¿Qué criaturas fueron\n eliminadas en 2021?");
             question.setAnswer1(Integer.toString(R.drawable.allay));
             question.setAnswer2(Integer.toString(R.drawable.glare));
@@ -90,7 +173,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setCorrectAnswers(0110);
             question.setType(1);
             database.questionsDao().insert(question);
-
+            //2
             question.setQuestion("¿Qué picos pueden picar\n la bedrock?");
             question.setAnswer1(Integer.toString(R.drawable.picomadera));
             question.setAnswer2(Integer.toString(R.drawable.picodiamante));
@@ -99,7 +182,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setCorrectAnswers(0000);
             question.setType(1);
             database.questionsDao().insert(question);
-
+            //3
             question.setQuestion("¿En qué bloque crece\n la caña de azucar?");
             question.setAnswer1(Integer.toString(R.drawable.sand));
             question.setAnswer2(Integer.toString(R.drawable.soulsand));
@@ -108,7 +191,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setCorrectAnswers(1000);
             question.setType(1);
             database.questionsDao().insert(question);
-
+            //4
             question.setQuestion("¿Con qué se puede\ncurar a un lobo\nen Minecraft Vanilla?");
             question.setAnswer1(Integer.toString(R.drawable.ternera));
             question.setAnswer2(Integer.toString(R.drawable.pezglobo));
@@ -117,6 +200,106 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setCorrectAnswers(1010);
             question.setType(1);
             database.questionsDao().insert(question);
+            //5
+            question.setQuestion("¿Cuál(es) aplica(n) un efecto negativo de poción?");
+            question.setAnswer1(Integer.toString(R.drawable.debilidad));
+            question.setAnswer2(Integer.toString(R.drawable.resistenciafuego));
+            question.setAnswer3(Integer.toString(R.drawable.invisibilidad));
+            question.setAnswer4("");
+            question.setCorrectAnswers(1000);
+            question.setType(1);
+            database.questionsDao().insert(question);
+            //6
+            question.setQuestion("¿Con qué se puede\ncurar a un lobo\nen Minecraft Vanilla?");
+            question.setAnswer1(Integer.toString(R.drawable.ternera));
+            question.setAnswer2(Integer.toString(R.drawable.pezglobo));
+            question.setAnswer3(Integer.toString(R.drawable.cerdo));
+            question.setAnswer4("");
+            question.setCorrectAnswers(1010);
+            question.setType(1);
+            database.questionsDao().insert(question);
+            //7
+            question.setQuestion("¿Con qué se puede\ncurar a un lobo\nen Minecraft Vanilla?");
+            question.setAnswer1(Integer.toString(R.drawable.ternera));
+            question.setAnswer2(Integer.toString(R.drawable.pezglobo));
+            question.setAnswer3(Integer.toString(R.drawable.cerdo));
+            question.setAnswer4("");
+            question.setCorrectAnswers(1010);
+            question.setType(1);
+            database.questionsDao().insert(question);
+            //8
+            question.setQuestion("¿Con qué se puede\ncurar a un lobo\nen Minecraft Vanilla?");
+            question.setAnswer1(Integer.toString(R.drawable.ternera));
+            question.setAnswer2(Integer.toString(R.drawable.pezglobo));
+            question.setAnswer3(Integer.toString(R.drawable.cerdo));
+            question.setAnswer4("");
+            question.setCorrectAnswers(1010);
+            question.setType(1);
+            database.questionsDao().insert(question);
+            //9
+            question.setQuestion("¿Con qué se puede\ncurar a un lobo\nen Minecraft Vanilla?");
+            question.setAnswer1(Integer.toString(R.drawable.ternera));
+            question.setAnswer2(Integer.toString(R.drawable.pezglobo));
+            question.setAnswer3(Integer.toString(R.drawable.cerdo));
+            question.setAnswer4("");
+            question.setCorrectAnswers(1010);
+            question.setType(1);
+            database.questionsDao().insert(question);
+            //10
+            question.setQuestion("¿Con qué se puede\ncurar a un lobo\nen Minecraft Vanilla?");
+            question.setAnswer1(Integer.toString(R.drawable.ternera));
+            question.setAnswer2(Integer.toString(R.drawable.pezglobo));
+            question.setAnswer3(Integer.toString(R.drawable.cerdo));
+            question.setAnswer4("");
+            question.setCorrectAnswers(1010);
+            question.setType(1);
+            database.questionsDao().insert(question);
+            //11
+            question.setQuestion("¿Con qué se puede\ncurar a un lobo\nen Minecraft Vanilla?");
+            question.setAnswer1(Integer.toString(R.drawable.ternera));
+            question.setAnswer2(Integer.toString(R.drawable.pezglobo));
+            question.setAnswer3(Integer.toString(R.drawable.cerdo));
+            question.setAnswer4("");
+            question.setCorrectAnswers(1010);
+            question.setType(1);
+            database.questionsDao().insert(question);
+            //12
+            question.setQuestion("¿Con qué se puede\ncurar a un lobo\nen Minecraft Vanilla?");
+            question.setAnswer1(Integer.toString(R.drawable.ternera));
+            question.setAnswer2(Integer.toString(R.drawable.pezglobo));
+            question.setAnswer3(Integer.toString(R.drawable.cerdo));
+            question.setAnswer4("");
+            question.setCorrectAnswers(1010);
+            question.setType(1);
+            database.questionsDao().insert(question);
+            //13
+            question.setQuestion("¿Con qué se puede\ncurar a un lobo\nen Minecraft Vanilla?");
+            question.setAnswer1(Integer.toString(R.drawable.ternera));
+            question.setAnswer2(Integer.toString(R.drawable.pezglobo));
+            question.setAnswer3(Integer.toString(R.drawable.cerdo));
+            question.setAnswer4("");
+            question.setCorrectAnswers(1010);
+            question.setType(1);
+            database.questionsDao().insert(question);
+            //14
+            question.setQuestion("¿Con qué se puede\ncurar a un lobo\nen Minecraft Vanilla?");
+            question.setAnswer1(Integer.toString(R.drawable.ternera));
+            question.setAnswer2(Integer.toString(R.drawable.pezglobo));
+            question.setAnswer3(Integer.toString(R.drawable.cerdo));
+            question.setAnswer4("");
+            question.setCorrectAnswers(1010);
+            question.setType(1);
+            database.questionsDao().insert(question);
+            //15
+            question.setQuestion("¿Con qué se puede\ncurar a un lobo\nen Minecraft Vanilla?");
+            question.setAnswer1(Integer.toString(R.drawable.ternera));
+            question.setAnswer2(Integer.toString(R.drawable.pezglobo));
+            question.setAnswer3(Integer.toString(R.drawable.cerdo));
+            question.setAnswer4("");
+            question.setCorrectAnswers(1010);
+            question.setType(1);
+            database.questionsDao().insert(question);
+
 
             //Preguntas multimedia:
             question.setQuestion("¿A qué mob corresponde este sonido?");
