@@ -126,6 +126,11 @@ public class Activity_Quiz extends AppCompatActivity {
         }
         else
         {
+            if (acierto) {
+                score++;
+                scoreTV.setText("Puntuación: "+score * 100 + "       Aciertos: " + score);
+            }
+            acierto = false;
             Intent intent = new Intent(this, Activity_Score.class);
             intent.putExtra("Score", score);
             intent.putExtra("Gamemode", mode);
