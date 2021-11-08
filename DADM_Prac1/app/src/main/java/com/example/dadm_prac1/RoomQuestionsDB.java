@@ -163,6 +163,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setType(0);
             database.questionsDao().insert(question);
 
+            //////////////////////////////////////////////////////////////////////////////////////////////
             //Preguntas con respuesta con imagen:
             //1
             question.setQuestion("¿Qué criaturas fueron\n eliminadas en 2021?");
@@ -210,97 +211,98 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setType(1);
             database.questionsDao().insert(question);
             //6
-            question.setQuestion("¿Con qué se puede\ncurar a un lobo\nen Minecraft Vanilla?");
+            question.setQuestion("¿Qué se puede obtener con la caña de pescar?");
             question.setAnswer1(Integer.toString(R.drawable.ternera));
             question.setAnswer2(Integer.toString(R.drawable.pezglobo));
             question.setAnswer3(Integer.toString(R.drawable.cerdo));
             question.setAnswer4("");
-            question.setCorrectAnswers(1010);
+            question.setCorrectAnswers(0100);
             question.setType(1);
             database.questionsDao().insert(question);
             //7
-            question.setQuestion("¿Con qué se puede\ncurar a un lobo\nen Minecraft Vanilla?");
+            question.setQuestion("¿Qué se obtiene del cerdo?");
             question.setAnswer1(Integer.toString(R.drawable.ternera));
             question.setAnswer2(Integer.toString(R.drawable.pezglobo));
             question.setAnswer3(Integer.toString(R.drawable.cerdo));
             question.setAnswer4("");
-            question.setCorrectAnswers(1010);
+            question.setCorrectAnswers(0010);
             question.setType(1);
             database.questionsDao().insert(question);
             //8
-            question.setQuestion("¿Con qué se puede\ncurar a un lobo\nen Minecraft Vanilla?");
-            question.setAnswer1(Integer.toString(R.drawable.ternera));
-            question.setAnswer2(Integer.toString(R.drawable.pezglobo));
-            question.setAnswer3(Integer.toString(R.drawable.cerdo));
+            question.setQuestion("¿Con qué se puede picar diamante?");
+            question.setAnswer1(Integer.toString(R.drawable.picodiamante));
+            question.setAnswer2(Integer.toString(R.drawable.picohierro));
+            question.setAnswer3(Integer.toString(R.drawable.picomadera));
             question.setAnswer4("");
-            question.setCorrectAnswers(1010);
+            question.setCorrectAnswers(1100);
             question.setType(1);
             database.questionsDao().insert(question);
             //9
-            question.setQuestion("¿Con qué se puede\ncurar a un lobo\nen Minecraft Vanilla?");
-            question.setAnswer1(Integer.toString(R.drawable.ternera));
-            question.setAnswer2(Integer.toString(R.drawable.pezglobo));
-            question.setAnswer3(Integer.toString(R.drawable.cerdo));
+            question.setQuestion("¿Con qué se puede hacer armadura?");
+            question.setAnswer1(Integer.toString(R.drawable.gold));
+            question.setAnswer2(Integer.toString(R.drawable.diamond));
+            question.setAnswer3(Integer.toString(R.drawable.emerald));
             question.setAnswer4("");
-            question.setCorrectAnswers(1010);
+            question.setCorrectAnswers(1100);
             question.setType(1);
             database.questionsDao().insert(question);
             //10
-            question.setQuestion("¿Con qué se puede\ncurar a un lobo\nen Minecraft Vanilla?");
-            question.setAnswer1(Integer.toString(R.drawable.ternera));
-            question.setAnswer2(Integer.toString(R.drawable.pezglobo));
-            question.setAnswer3(Integer.toString(R.drawable.cerdo));
+            question.setQuestion("¿Qué herramienta se rompe antes?");
+            question.setAnswer1(Integer.toString(R.drawable.picomadera));
+            question.setAnswer2(Integer.toString(R.drawable.picohierro));
+            question.setAnswer3(Integer.toString(R.drawable.picodiamante));
             question.setAnswer4("");
-            question.setCorrectAnswers(1010);
+            question.setCorrectAnswers(1000);
             question.setType(1);
             database.questionsDao().insert(question);
             //11
-            question.setQuestion("¿Con qué se puede\ncurar a un lobo\nen Minecraft Vanilla?");
-            question.setAnswer1(Integer.toString(R.drawable.ternera));
-            question.setAnswer2(Integer.toString(R.drawable.pezglobo));
-            question.setAnswer3(Integer.toString(R.drawable.cerdo));
+            question.setQuestion("¿Qué se utiliza para intercambios con los aldeanos?");
+            question.setAnswer1(Integer.toString(R.drawable.diamond));
+            question.setAnswer2(Integer.toString(R.drawable.emerald));
+            question.setAnswer3(Integer.toString(R.drawable.gold));
             question.setAnswer4("");
-            question.setCorrectAnswers(1010);
+            question.setCorrectAnswers(0100);
             question.setType(1);
             database.questionsDao().insert(question);
             //12
-            question.setQuestion("¿Con qué se puede\ncurar a un lobo\nen Minecraft Vanilla?");
-            question.setAnswer1(Integer.toString(R.drawable.ternera));
-            question.setAnswer2(Integer.toString(R.drawable.pezglobo));
-            question.setAnswer3(Integer.toString(R.drawable.cerdo));
+            question.setQuestion("¿Qué mineral es más difícil de encontrar?");
+            question.setAnswer1(Integer.toString(R.drawable.diamond));
+            question.setAnswer2(Integer.toString(R.drawable.emerald));
+            question.setAnswer3(Integer.toString(R.drawable.gold));
             question.setAnswer4("");
-            question.setCorrectAnswers(1010);
+            question.setCorrectAnswers(0100);
             question.setType(1);
             database.questionsDao().insert(question);
             //13
-            question.setQuestion("¿Con qué se puede\ncurar a un lobo\nen Minecraft Vanilla?");
-            question.setAnswer1(Integer.toString(R.drawable.ternera));
-            question.setAnswer2(Integer.toString(R.drawable.pezglobo));
-            question.setAnswer3(Integer.toString(R.drawable.cerdo));
+            question.setQuestion("¿Qué flecha aplica debilidad?");
+            question.setAnswer1(Integer.toString(R.drawable.debilidad));
+            question.setAnswer2(Integer.toString(R.drawable.resistenciafuego));
+            question.setAnswer3(Integer.toString(R.drawable.invisibilidad));
             question.setAnswer4("");
-            question.setCorrectAnswers(1010);
+            question.setCorrectAnswers(1000);
             question.setType(1);
             database.questionsDao().insert(question);
             //14
-            question.setQuestion("¿Con qué se puede\ncurar a un lobo\nen Minecraft Vanilla?");
-            question.setAnswer1(Integer.toString(R.drawable.ternera));
-            question.setAnswer2(Integer.toString(R.drawable.pezglobo));
-            question.setAnswer3(Integer.toString(R.drawable.cerdo));
+            question.setQuestion("¿Qué flecha se obtiene de un aldeano?");
+            question.setAnswer1(Integer.toString(R.drawable.debilidad));
+            question.setAnswer2(Integer.toString(R.drawable.resistenciafuego));
+            question.setAnswer3(Integer.toString(R.drawable.invisibilidad));
             question.setAnswer4("");
-            question.setCorrectAnswers(1010);
+            question.setCorrectAnswers(1110);
             question.setType(1);
             database.questionsDao().insert(question);
             //15
-            question.setQuestion("¿Con qué se puede\ncurar a un lobo\nen Minecraft Vanilla?");
-            question.setAnswer1(Integer.toString(R.drawable.ternera));
-            question.setAnswer2(Integer.toString(R.drawable.pezglobo));
-            question.setAnswer3(Integer.toString(R.drawable.cerdo));
+            question.setQuestion("¿Qué flecha aplica invisibilidad?");
+            question.setAnswer1(Integer.toString(R.drawable.invisibilidad));
+            question.setAnswer2(Integer.toString(R.drawable.resistenciafuego));
+            question.setAnswer3(Integer.toString(R.drawable.debilidad));
             question.setAnswer4("");
-            question.setCorrectAnswers(1010);
+            question.setCorrectAnswers(1000);
             question.setType(1);
             database.questionsDao().insert(question);
 
 
+            //////////////////////////////////////////////////////////////////////////////////////////////
             //Preguntas multimedia:
             question.setQuestion("¿A qué mob corresponde este sonido?");
             question.setAnswer1("Lobo");
