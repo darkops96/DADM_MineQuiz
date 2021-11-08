@@ -11,13 +11,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button openQuiz, exit, ranking, btUser, config;
-    private Spinner spinner;
     private int mode;
     private String user;
     private TextView helloUser;
@@ -34,8 +32,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
         user = intent.getStringExtra("User").toString().trim();
         mode = intent.getIntExtra("Gamemode", 0);
-        numPregs = intent.getIntExtra("numPregs", 2);
-        numPregs = (numPregs*5)+5;
+        numPregs = intent.getIntExtra("numPregs", 0);
 
         helloUser = (TextView) findViewById(R.id.helloUser);
         helloUser.setText("¡Hola "+user+"!");
@@ -106,7 +103,8 @@ public class MainActivity extends AppCompatActivity {
     }
     public void OpenConfig(){
         Intent intent = new Intent(this, Activity_Configuration.class);
-        intent.putExtra("Gamemode",mode);
+        intent.putExtra("Gamemode", mode);
+        intent.putExtra("numPregs", numPregs);
         intent.putExtra("User", user);
         startActivity(intent);
         finish();

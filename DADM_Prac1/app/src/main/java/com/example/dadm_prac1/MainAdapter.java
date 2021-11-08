@@ -182,6 +182,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     public void OpenMenu(String username){
         Intent intent = new Intent(context, MainActivity.class);
         intent.putExtra("User", username);
+        intent.putExtra("Gamemode", database.mainDao().getQuizType(username));
+        intent.putExtra("numPregs", database.mainDao().getNumPregs(username));
         context.startActivity(intent);
         context.finish();
     }

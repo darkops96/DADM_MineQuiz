@@ -84,6 +84,8 @@ public class Activity_NewUser extends AppCompatActivity {
                         data.setUsername(sText);
                         data.setPoints(0);
                         data.setTimesPlayed(0);
+                        data.setNumPreg(0);
+                        data.setQuizMode(0);
 
                         ZoneId spain = ZoneId.of("Europe/Paris");
                         ZonedDateTime zdt = Instant.now().atZone(spain);

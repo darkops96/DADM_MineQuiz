@@ -65,6 +65,8 @@ public class RegisterActivity extends AppCompatActivity {
     public void OpenMenu(){
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("User", "Steve");
+        intent.putExtra("Gamemode", 0);
+        intent.putExtra("numPregs", 0);
         startActivity(intent);
     }
 

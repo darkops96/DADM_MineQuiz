@@ -40,6 +40,14 @@ public interface UserDao {
     @Query("UPDATE users SET PartidasJugadas = :sGames WHERE username = :sUsername")
     void updateGames(String sUsername, int sGames);
 
+    //Update quiz type query
+    @Query("UPDATE users SET ModoPreguntas = :sType WHERE username = :sUsername")
+    void updateQuizType(String sUsername, int sType);
+
+    //Update amount of questions query
+    @Query("UPDATE users SET NumeroPreguntas = :sNumPregs WHERE username = :sUsername")
+    void updateNumPregs(String sUsername, int sNumPregs);
+
     //Get all data query
     @Query("SELECT * FROM users")
     List<UserData> getAll();
@@ -51,4 +59,12 @@ public interface UserDao {
     //Get user times played query
     @Query("SELECT PartidasJugadas FROM users WHERE username = :sUsername")
     int getTimes(String sUsername);
+
+    //Get quiz type query
+    @Query("SELECT ModoPreguntas FROM users WHERE username = :sUsername")
+    int getQuizType(String sUsername);
+
+    //Get amount of questions query
+    @Query("SELECT NumeroPreguntas FROM users WHERE username = :sUsername")
+    int getNumPregs(String sUsername);
 }

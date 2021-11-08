@@ -28,6 +28,28 @@ public class UserData implements Serializable {
     @ColumnInfo(name = "UltimaConexion")
     private String lastTime;
 
+    @ColumnInfo(name = "ModoPreguntas")
+    private int quizMode;
+
+    @ColumnInfo(name = "NumeroPreguntas")
+    private int numPreg;
+
+    public int getQuizMode() {
+        return quizMode;
+    }
+
+    public void setQuizMode(int quizMode) {
+        this.quizMode = quizMode;
+    }
+
+    public int getNumPreg() {
+        return numPreg;
+    }
+
+    public void setNumPreg(int numPreg) {
+        this.numPreg = numPreg;
+    }
+
     public int getTimesPlayed() {
         return timesPlayed;
     }

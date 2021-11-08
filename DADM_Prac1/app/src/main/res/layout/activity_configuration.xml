@@ -35,7 +35,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spinnerMode"
         android:layout_width="267dp"
         android:layout_height="51dp"
         android:layout_marginTop="100dp"
@@ -52,13 +52,31 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="130dp"
         android:layout_marginTop="52dp"
-        android:layout_marginEnd="156dp"
-        android:text="Modo de Juego"
-        app:layout_constraintBottom_toTopOf="@+id/spinner"
+        android:layout_marginEnd="130dp"
+        android:text="Modo de juego:"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MenuToolbar"
-        app:layout_constraintVertical_bias="0.172" />
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MenuToolbar" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginEnd="130dp"
+        android:text="Cantidad de preguntas:"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerMode" />
 
     <TableRow
         android:layout_width="200dp"
@@ -86,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/asap"
                 android:text="5"
-                android:textColor="#000000"
+                android:textColor="#FFFFFF"
                 android:textStyle="bold" />
 
             <RadioButton
@@ -95,17 +113,17 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/asap"
                 android:text="10"
-                android:textColor="#000000"
+                android:textColor="#FFFFFF"
                 android:textStyle="bold" />
 
             <RadioButton
                 android:id="@+id/preg15"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="true"
+                android:checked="false"
                 android:fontFamily="@font/asap"
                 android:text="15"
-                android:textColor="#000000"
+                android:textColor="#FFFFFF"
                 android:textStyle="bold" />
 
         </RadioGroup>

@@ -27,13 +27,13 @@ import java.util.TimerTask;
 public class Activity_Quiz extends AppCompatActivity {
 
     private Button botonValidar;
-    private int score, numPreg, mode;
+    private int score, fails, numPreg, mode;
     private FragmentContainerView myContainer;
     private boolean acierto, intermedio;
     private TextView scoreTV;
     private String user;
-    private TextView timerText;
-    private int numPregs;
+    private TextView timerText, preguntaActualText;
+    private int numPregs, preguntasTotales;
 
     //Room
     List<QuestionsData> questionsList = new ArrayList<>();
@@ -55,7 +55,7 @@ public class Activity_Quiz extends AppCompatActivity {
         timerText = (TextView) findViewById(R.id.timer);
         timer = new Timer();
 
-
+        preguntaActualText = (TextView) findViewById(R.id.preguntaActual);
 
         questionsDB = RoomQuestionsDB.getInstance(this);
         questionsList = questionsDB.questionsDao().getAll();
@@ -71,15 +71,18 @@ public class Activity_Quiz extends AppCompatActivity {
         }
 
         score = 0;
+        fails = 0;
         scoreTV = (TextView) findViewById(R.id.scoreTV);
-        scoreTV.setText("Puntuación: "+score * 100 + "        Aciertos: " + score);
+        scoreTV.setText("A: "+ score + " / F: " + fails + " / P: "+ score * 100);
         numPreg = 0;
         acierto = false;
         intermedio = false;
         Intent intent = getIntent();
         mode = intent.getIntExtra("Gamemode", -1);
         user = intent.getStringExtra("User").toString().trim();
-        numPregs = intent.getIntExtra("numPregs", -1);
+        numPregs = intent.getIntExtra("numPregs", 0);
+        preguntasTotales = (numPregs*5)+5;
+        preguntaActualText.setText("Pregunta " + (numPreg + 1) + " de " + preguntasTotales);
 
         Fragment fragment;
         if(mode == 0){
@@ -111,17 +114,20 @@ public class Activity_Quiz extends AppCompatActivity {
     public void ChangeQuestion(){
 
 
-        if(numPreg<numPregs-1)
+        if(numPreg<preguntasTotales-1)
         {
             Fragment fragment;
             if (acierto) {
                 score++;
-                scoreTV.setText("Puntuación: "+score * 100 + "       Aciertos: " + score);
+                scoreTV.setText("A: "+ score + " / F: " + fails + " / P: "+ score * 100);
+            } else {
+                fails++;
+                scoreTV.setText("A: "+ score + " / F: " + fails + " / P: "+ score * 100);
             }
             numPreg++;
             if(mode == 0) {
                 fragment = new Pregunta_Texto();
-            } else if(mode ==1){
+            } else if(mode ==1     ){
                 fragment = new Pregunta_Imagenes();
             } else{
                 fragment = new Pregunta_Multimedia();
@@ -133,17 +139,22 @@ public class Activity_Quiz extends AppCompatActivity {
             FragmentTransaction transaction = fm.beginTransaction();
             transaction.replace(R.id.fragmentContainerView, fragment);
             transaction.commit();
+            preguntaActualText.setText("Pregunta " + (numPreg + 1) + " de " + preguntasTotales);
         }
         else
         {
             if (acierto) {
                 score++;
-                scoreTV.setText("Puntuación: "+score * 100 + "       Aciertos: " + score);
+                scoreTV.setText("A: "+ score + " / F: " + fails + " / P: "+ score * 100);
+            } else {
+                fails++;
+                scoreTV.setText("A: "+ score + " / F: " + fails + " / P: "+ score * 100);
             }
             acierto = false;
             Intent intent = new Intent(this, Activity_Score.class);
             intent.putExtra("Score", (int) Math.round(score*100/finalTime));
             intent.putExtra("Gamemode", mode);
+            intent.putExtra("numPregs", numPregs);
             intent.putExtra("User", user);
             startActivity(intent);
             finish();

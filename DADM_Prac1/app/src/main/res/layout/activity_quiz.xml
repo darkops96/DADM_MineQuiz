@@ -83,4 +83,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <TextView
+        android:id="@+id/preguntaActual"
+        android:layout_width="177dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="152dp"
+        android:layout_marginEnd="40dp"
+        android:textAlignment="center"
+        android:background="#FFF9E9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView6" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

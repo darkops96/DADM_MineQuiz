@@ -16,6 +16,7 @@ public class Activity_Score extends AppCompatActivity {
     private int mode;
     private String user;
     private RoomUsersDB database;
+    private int numPregs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,7 @@ public class Activity_Score extends AppCompatActivity {
         int score = intent.getIntExtra("Score", -1);
         mode = intent.getIntExtra("Gamemode", -1);
         user = intent.getStringExtra("User").toString().trim();
+        numPregs = intent.getIntExtra("numPregs", 0);
         TextView scorewT = findViewById(R.id.score);
         if(score == 1){
             scorewT.setText("¡Has obtenido \n"+score+" punto!");
@@ -54,12 +56,15 @@ public class Activity_Score extends AppCompatActivity {
     public void OpenQuiz(){
         Intent intent = new Intent(this, Activity_Quiz.class);
         intent.putExtra("Gamemode", mode);
+        intent.putExtra("numPregs", numPregs);
         intent.putExtra("User", user);
         startActivity(intent);
         finish();
     }
     public void OpenMenu(){
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("Gamemode", mode);
+        intent.putExtra("numPregs", numPregs);
         intent.putExtra("User", user);
         startActivity(intent);
         finish();
