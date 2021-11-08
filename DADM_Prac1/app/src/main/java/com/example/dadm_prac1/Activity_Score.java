@@ -71,6 +71,9 @@ public class Activity_Score extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {}
+
+    @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         if (hasFocus) {

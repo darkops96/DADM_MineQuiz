@@ -82,16 +82,16 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setType(0);
             database.questionsDao().insert(question);
             //7
-            question.setQuestion("¿Qué lenguaje de programación \n se utilizó para crear la primera\n versión de Minecraft?");
+            question.setQuestion("¿Qué lenguaje de programación se\nutilizó en la 1ª versión?");
             question.setAnswer1("Java");
-            question.setAnswer2("Python");
+            question.setAnswer2("C++");
             question.setAnswer3("Aragonés");
             question.setAnswer4("Francés");
             question.setCorrectAnswers(1000);
             question.setType(0);
             database.questionsDao().insert(question);
             //8
-            question.setQuestion("¿En qué consola NO se ha lanzado Minecraft?");
+            question.setQuestion("¿En qué consola NO se\nha lanzado Minecraft?");
             question.setAnswer1("Wii");
             question.setAnswer2("PSVita");
             question.setAnswer3("Xbox");
@@ -100,7 +100,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setType(0);
             database.questionsDao().insert(question);
             //9
-            question.setQuestion("¿En qué país se encuentra \n la empresa que ha desarrollado el juego?");
+            question.setQuestion("¿En qué país se encuentra la\nempresa que lo desarrolló?");
             question.setAnswer1("Finlandia");
             question.setAnswer2("Suecia");
             question.setAnswer3("País Vasco");
@@ -145,7 +145,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setType(0);
             database.questionsDao().insert(question);
             //14
-            question.setQuestion("¿Cuantos diamantes necesitas\n para hacer una pechera de diamantes?");
+            question.setQuestion("¿Cuantos diamantes necesitas para\nhacer una pechera de diamantes?");
             question.setAnswer1("6");
             question.setAnswer2("9");
             question.setAnswer3("8");
@@ -154,7 +154,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             question.setType(0);
             database.questionsDao().insert(question);
             //15
-            question.setQuestion("¿Qué mob da mayor cantidad de experiencia?");
+            question.setQuestion("¿Qué mob da mayor\ncantidad de experiencia?");
             question.setAnswer1("Creeper");
             question.setAnswer2("Blaze");
             question.setAnswer3("Ghast");
@@ -166,7 +166,7 @@ public abstract class RoomQuestionsDB extends RoomDatabase {
             //////////////////////////////////////////////////////////////////////////////////////////////
             //Preguntas con respuesta con imagen:
             //1
-            question.setQuestion("¿Qué criaturas fueron\n eliminadas en 2021?");
+            question.setQuestion("¿Qué criaturas fueron\neliminadas en 2021?");
             question.setAnswer1(Integer.toString(R.drawable.allay));
             question.setAnswer2(Integer.toString(R.drawable.glare));
             question.setAnswer3(Integer.toString(R.drawable.golemcobre));

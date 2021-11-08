@@ -89,6 +89,9 @@ public class Activity_Ranking extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {}
+
+    @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         if (hasFocus) {

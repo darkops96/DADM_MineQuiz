@@ -170,6 +170,9 @@ public class Activity_Quiz extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {}
+
+    @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         if (hasFocus) {
@@ -211,6 +214,6 @@ public class Activity_Quiz extends AppCompatActivity {
     }
 
     private String formatTime(int seconds, int minutes){
-        return String.format("Time:  " + String.format("%02d",minutes)+":"+String.format("%02d",seconds));
+        return String.format("Tiempo:  " + String.format("%02d",minutes)+":"+String.format("%02d",seconds));
     }
 }

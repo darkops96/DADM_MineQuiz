@@ -123,20 +123,14 @@ public class Activity_NewUser extends AppCompatActivity {
 
     private void DispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        // Ensure that there's a camera activity to handle the intent
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            // Create the File where the photo should go
             File photoFile = null;
             try {
                 photoFile = createImageFile();
-            } catch (IOException ex) {
-                // Error occurred while creating the File
-            }
-            // Continue only if the File was successfully created
+            } catch (IOException ex) {}
+
             if (photoFile != null) {
-                Uri photoURI = FileProvider.getUriForFile(this,
-                        "com.example.android.fileprovider",
-                        photoFile);
+                Uri photoURI = FileProvider.getUriForFile(this, "com.example.android.fileprovider", photoFile);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 startActivityForResult(takePictureIntent, CAMERA_REQUEST);
             }
@@ -152,17 +146,10 @@ public class Activity_NewUser extends AppCompatActivity {
     }
 
     private File createImageFile() throws IOException {
-        // Create an image file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "JPEG_MineQuiz_" + timeStamp + "_";
-        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File image = File.createTempFile(
-                imageFileName,  /* prefix */
-                ".jpg",         /* suffix */
-                storageDir      /* directory */
-        );
-
-        // Save a file: path for use with ACTION_VIEW intents
+        String dateSt = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_MineQuiz_" + dateSt + "_";
+        File storageDirectory = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(imageFileName, ".jpg", storageDirectory);
         photoPath = image.getAbsolutePath();
         return image;
     }
@@ -177,11 +164,9 @@ public class Activity_NewUser extends AppCompatActivity {
     }
 
     private void setPic() {
-        // Get the dimensions of the View
-        int targetW = btPhoto.getWidth();
-        int targetH = btPhoto.getHeight();
+        int btW = btPhoto.getWidth();
+        int btH = btPhoto.getHeight();
 
-        // Get the dimensions of the bitmap
         BitmapFactory.Options bmOptions = new BitmapFactory.Options();
         bmOptions.inJustDecodeBounds = true;
 
@@ -190,10 +175,8 @@ public class Activity_NewUser extends AppCompatActivity {
         int photoW = bmOptions.outWidth;
         int photoH = bmOptions.outHeight;
 
-        // Determine how much to scale down the image
-        int scaleFactor = Math.max(1, Math.min(photoW/targetW, photoH/targetH));
+        int scaleFactor = Math.max(1, Math.min(photoW/btW, photoH/btH));
 
-        // Decode the image file into a Bitmap sized to fill the View
         bmOptions.inJustDecodeBounds = false;
         bmOptions.inSampleSize = scaleFactor;
         bmOptions.inPurgeable = true;
@@ -208,6 +191,9 @@ public class Activity_NewUser extends AppCompatActivity {
         bitmap = Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, false);
         btPhoto.setImageBitmap(bitmap);
     }
+
+    @Override
+    public void onBackPressed() {}
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
