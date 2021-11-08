@@ -49,32 +49,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonQuiz" />
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="267dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="68dp"
-        android:background="#526935"
-        android:dropDownWidth="wrap_content"
-        android:padding="10sp"
-        android:fontFamily="@font/asap"
-        android:popupBackground="#526935"
-        app:layout_constraintBottom_toTopOf="@+id/buttonQuiz"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MenuToolbar"
-        app:layout_constraintVertical_bias="0.654" />
-
     <Button
         android:id="@+id/buttonExit"
         android:layout_width="135dp"
         android:layout_height="76dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="52dp"
         android:backgroundTint="#526935"
         android:fontFamily="@font/asap"
         android:text="SALIR"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/B_rank" />
+
+    <Button
+        android:id="@+id/button_Config"
+        android:layout_width="160dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="168dp"
+        android:backgroundTint="#526935"
+        android:fontFamily="@font/asap"
+        android:text="CONFIGURATION"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/B_rank" />
 

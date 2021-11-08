@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.dadm_prac1">
+    package="com.example.dadm_prac1" >
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -16,7 +16,10 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.DADM_Prac1">
+        android:theme="@style/Theme.DADM_Prac1" >
+        <activity
+            android:name=".Activity_Configuration"
+            android:exported="true" />
         <activity
             android:name=".ActivityUpdatePhoto"
             android:exported="true" />
@@ -25,7 +28,7 @@
             android:exported="true" />
         <activity
             android:name=".RegisterActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -53,7 +56,7 @@
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.android.fileprovider"
             android:exported="false"
-            android:grantUriPermissions="true">
+            android:grantUriPermissions="true" >
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />

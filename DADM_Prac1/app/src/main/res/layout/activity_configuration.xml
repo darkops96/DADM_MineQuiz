@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#926C4D"
+    android:layout_height="match_parent"
+    tools:context=".Activity_Configuration">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/MenuToolbar"
+        android:layout_width="411dp"
+        android:layout_height="66dp"
+        android:background="?attr/colorPrimary"
+        android:backgroundTint="#526935"
+        android:fontFamily="@font/asap"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Configuración"
+        app:titleTextColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/buttonExit"
+        android:layout_width="135dp"
+        android:layout_height="76dp"
+        android:layout_marginBottom="68dp"
+        android:backgroundTint="#526935"
+        android:fontFamily="@font/asap"
+        android:text="GUARDAR Y VOLVER"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="267dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="100dp"
+        android:background="#526935"
+        android:dropDownWidth="wrap_content"
+        android:fontFamily="@font/asap"
+        android:padding="10sp"
+        android:popupBackground="#526935"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MenuToolbar" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="156dp"
+        android:text="Modo de Juego"
+        app:layout_constraintBottom_toTopOf="@+id/spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MenuToolbar"
+        app:layout_constraintVertical_bias="0.172" />
+
+    <TableRow
+        android:layout_width="200dp"
+        android:layout_height="147dp"
+        android:layout_marginTop="308dp"
+        android:fontFamily="@font/asap"
+        app:layout_constraintBottom_toTopOf="@+id/buttonExit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.815"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.348">
+
+        <RadioGroup
+            android:id="@+id/numPreguntas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_span="0"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/preg5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/asap"
+                android:text="5"
+                android:textColor="#000000"
+                android:textStyle="bold" />
+
+            <RadioButton
+                android:id="@+id/preg10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/asap"
+                android:text="10"
+                android:textColor="#000000"
+                android:textStyle="bold" />
+
+            <RadioButton
+                android:id="@+id/preg15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:fontFamily="@font/asap"
+                android:text="15"
+                android:textColor="#000000"
+                android:textStyle="bold" />
+
+        </RadioGroup>
+    </TableRow>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

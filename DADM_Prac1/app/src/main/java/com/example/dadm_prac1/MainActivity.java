@@ -16,12 +16,13 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button openQuiz, exit, ranking, btUser;
+    private Button openQuiz, exit, ranking, btUser, config;
     private Spinner spinner;
     private int mode;
     private String user;
     private TextView helloUser;
     RoomUsersDB database;
+    private int numPregs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
         database = RoomUsersDB.getInstance(this);
         Intent intent = getIntent();
         user = intent.getStringExtra("User").toString().trim();
+        mode = intent.getIntExtra("Gamemode", 0);
+        numPregs = intent.getIntExtra("numPregs", 2);
+        numPregs = (numPregs*5)+5;
+
         helloUser = (TextView) findViewById(R.id.helloUser);
         helloUser.setText("¡Hola "+user+"!");
         btUser = (Button) findViewById(R.id.bt_user);
@@ -52,23 +57,18 @@ public class MainActivity extends AppCompatActivity {
                 finishAffinity();
             }
         });
+
+        config = (Button) findViewById(R.id.button_Config);
+        config.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                OpenConfig();
+            }
+        });
         ranking = (Button) findViewById(R.id.B_rank);
         ranking.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){ OpenRank();}
-        });
-        spinner = (Spinner) findViewById(R.id.spinner);
-        String[] gamemode = new String[]{"Preguntas Texto", "Preguntas Imágenes", "Preguntas Multimedia"};
-        spinner.setAdapter(new ArrayAdapter<String>(this, R.layout.spinner_item,gamemode));
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                mode = i;
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-                mode = 0;
-            }
         });
 
         btUser.setOnClickListener(new View.OnClickListener() {
@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Activity_Quiz.class);
         intent.putExtra("Gamemode", mode);
         intent.putExtra("User", user);
+        intent.putExtra("numPregs", numPregs);
         startActivity(intent);
         finish();
     }
@@ -100,6 +101,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void OpenRegister(){
         Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
+        finish();
+    }
+    public void OpenConfig(){
+        Intent intent = new Intent(this, Activity_Configuration.class);
+        intent.putExtra("Gamemode",mode);
+        intent.putExtra("User", user);
         startActivity(intent);
         finish();
     }
