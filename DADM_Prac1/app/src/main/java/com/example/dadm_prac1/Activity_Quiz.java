@@ -33,6 +33,7 @@ public class Activity_Quiz extends AppCompatActivity {
     private TextView scoreTV;
     private String user;
     private TextView timerText;
+    private int numPregs;
 
     //Room
     List<QuestionsData> questionsList = new ArrayList<>();
@@ -78,6 +79,7 @@ public class Activity_Quiz extends AppCompatActivity {
         Intent intent = getIntent();
         mode = intent.getIntExtra("Gamemode", -1);
         user = intent.getStringExtra("User").toString().trim();
+        numPregs = intent.getIntExtra("numPregs", -1);
 
         Fragment fragment;
         if(mode == 0){
@@ -107,17 +109,9 @@ public class Activity_Quiz extends AppCompatActivity {
     }
 
     public void ChangeQuestion(){
-        int maxPreg;
 
-        if(mode == 0) {
-            maxPreg = textQuestionsList.size();
-        } else if(mode == 1) {
-            maxPreg = imageQuestionsList.size();
-        } else{
-            maxPreg = multimediaQuestionsList.size();
-        }
 
-        if(numPreg<maxPreg-1)
+        if(numPreg<numPregs-1)
         {
             Fragment fragment;
             if (acierto) {
